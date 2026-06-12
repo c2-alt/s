@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新海市都市报 - 每日焦点</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+            --primary-color: #c92a2a; /* 略带沉闷的警示红 */
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 模拟新闻网站顶栏 */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+            letter-spacing: 2px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-bar {
+            background: #333;
+            color: #fff;
+            padding: 5px 20px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* 主体布局 */
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #111;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .meta-info {
+            font-size: 14px;
+            color: #666;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .meta-info span {
+            margin-right: 15px;
+        }
+
+        /* 新闻正文与图片 */
+        .news-content {
+            font-size: 16px;
+            color: #222;
+            text-align: justify;
+        }
+
+        .img-container {
+            text-align: center;
+            margin: 25px 0;
+            background: #f0f0f0;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            max-height: 450px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .img-caption {
+            font-size: 13px;
+            color: #666;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .highlight-box {
+            background-color: #fff5f5;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 15px;
+        }
+
+        /* 评论区样式 */
+        .comment-section {
+            margin-top: 50px;
+            border-top: 2px solid #333;
+            padding-top: 30px;
+        }
+
+        .comment-section h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 评论输入框 */
+        .comment-form {
+            margin-bottom: 30px;
+        }
+
+        .comment-form textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            resize: none;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .comment-form .submit-btn {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            float: right;
+        }
+
+        .comment-form .submit-btn:hover {
+            background-color: #555;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* 评论列表 */
+        .comment-list {
+            margin-top: 20px;
+        }
+
+        .comment-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .comment-user {
+            font-weight: bold;
+            color: #444;
+        }
+
+        .comment-body {
+            font-size: 15px;
+            color: #222;
+            word-wrap: break-word;
+        }
+
+        /* 评论交互工具栏 */
+        .comment-actions {
+            margin-top: 8px;
+            font-size: 13px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .action-btn {
+            color: #0066cc;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .action-btn:hover {
+            text-decoration: underline;
+        }
+
+        .like-count {
+            color: #666;
+            font-size: 12px;
+        }
+
+        /* 回复输入框（动态生成） */
+        .reply-form-container {
+            margin-top: 10px;
+            padding-left: 20px;
+            border-left: 2px solid var(--border-color);
+        }
+
+        /* 子回复列表 */
+        .replies-container {
+            margin-top: 10px;
+            padding-left: 20px;
+            border-left: 2px solid #eee;
+            background: #fafafa;
+        }
+        
+        .reply-item {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 14px;
+        }
+        .reply-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>新海市新闻网</header>
+    <div class="nav-bar">
+        <span>当前位置：首页 > 民生速递 > 正文</span>
+        <span id="current-time">2026年6月12日</span>
+    </div>
+
+    <div class="container">
+        <!-- 新闻标题区 -->
+        <h1>【紧急寻人】新海第三高级中学一高二女生于家中离奇失踪，警方已介入调查，望知情市民提供线索</h1>
+        
+        <div class="meta-info">
+            <span>来源：新海晚报精选</span>
+            <span>记者：崔默</span>
+            <span>发布时间：2026-06-11 18:34</span>
+            <span>阅读量：4.2万</span>
+        </div>
+
+        <!-- 新闻正文 -->
+        <div class="news-content">
+            <p><strong>新海市讯</strong> 记者日前从本市东区派出所获悉，6月10日清晨，居住在新海市滨顺区幸福里小区的一名17岁女高中生张方晴被家人发现于家中卧室内失踪。家属随后向警方报案，目前警方已正式立案并展开全方位搜寻。</p>
+            
+            <!-- 新闻图片 -->
+            <div class="img-container">
+                <!-- 引用用户提供的图片文件 -->
+                <img src="image.png" alt="失踪女高中生张方晴生活照">
+                <div class="img-caption">图为失踪女高中生张方晴的近期登记照</div>
+            </div>
+
+            <p>据张方晴的母亲介绍，6月9日当晚23时左右，张方晴在完成学校功课后洗漱准备就寝，期间并未表现出任何异常情绪。然而，次日清晨6时许，母亲推门准备催促其起床上学时，却发现房间内空无一人，床铺和睡衣均叠放整齐，张方晴平常用的手机、钱包、身份证件以及书包均完好留存在屋内。</p>
+            
+            <p>“家里的门窗都是从里面反锁的，没有任何外人闯入的痕迹。她平时很乖，成绩也稳定，和家里人关系都没有问题，绝对不可能离家出走的。”张方晴的父亲在接受采访时情绪一度失控。据小区物业提供的监控录像显示，从6月9日晚23时至次日清晨，张方晴居住的单元楼门口并未出现其离开的画面，周边的天网监控也未捕捉到其身影。该女生仿佛在自家卧室里“人间蒸发”了一般。</p>
+
+            <div class="highlight-box">
+                <strong>【失踪人员基本信息】</strong><br>
+                张方晴，女，17岁，身高约162cm，体型中等，黑长发，扎马尾。失踪时可能身穿新海第三高级中学的蓝白相间夏季校服（如图所示）。
+            </div>
+
+            <p>由于案情极其反常，新海市公安局已调集刑侦大队及网络安全保卫支队成立联合专案组。警方呼吁，广大市民及出租车司机、周边居民，如在6月9日深夜至6月10日凌晨期间，于滨顺区幸福里小区附近看到过形迹可疑的人员，或有任何关于张方晴的线索，请立刻与警方取得联系，感谢您的配合。</p>
+            
+            <p style="text-align: right; font-weight: bold; margin-top: 30px;">新海市公安局联系电话：110 / 05X-XXXX8110<br>联系人：章警官、刘警官</p>
+        </div>
+
+        <!-- 互动评论区 -->
+        <div class="comment-section">
+            <h2>
+                <span>网友评论（<span id="comment-count">4</span>）</span>
+                <span style="font-size: 14px; color: #888;">注意：请理性发言，禁止造谣传谣</span>
+            </h2>
+
+            <!-- 发评框 -->
+            <div class="comment-form clearfix">
+                <textarea id="main-comment-input" placeholder="输入你的评论..."></textarea>
+                <button class="submit-btn" onclick="addMainComment()">发表评论</button>
+            </div>
+
+            <!-- 评论列表 -->
+            <div class="comment-list" id="comment-list">
+                
+                <!-- 预设恐怖氛围评论 1 -->
+                <div class="comment-item" data-id="1">
+                    <div class="comment-header">
+                        <span class="comment-user">干饭小鲁班</span>
+                        <span>06-11</span>
+                    </div>
+                    <div class="comment-body">幸福里小区？我上班天天路过，老小区了，安保不行。家里门窗反锁，人能去哪？这也够邪门了。</div>
+                    <div class="comment-actions">
+                        <span class="action-btn" onclick="likeComment(this)">👍 点赞(<span class="like-count">142</span>)</span>
+                        <span class="action-btn" onclick="showReplyForm(this, '干饭小鲁班')">💬 回复</span>
+                    </div>
+                    <div class="replies-container">
+                        <div class="reply-item">
+                            <strong>牛马枫:</strong> 我就是幸福里的，安保确实不行，物业也不管事。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 预设恐怖氛围评论 2 -->
+                <div class="comment-item" data-id="2">
+                    <div class="comment-header">
+                        <span class="comment-user">好想嗑瓜子（备战月考版）</span>
+                        <span>06-11</span>
+                    </div>
+                    <div class="comment-body">我去，居然是我们学校的！好像有点印象，我们班和她们班是一个物理老师教。</div>
+                    <div class="comment-actions">
+                        <span class="action-btn" onclick="likeComment(this)">👍 点赞(<span class="like-count">389</span>)</span>
+                        <span class="action-btn" onclick="showReplyForm(this, '好想嗑瓜子（备战月考版')">💬 回复</span>
+                    </div>
+                    <div class="replies-container"></div>
+                </div>
+
+                <!-- 预设恐怖氛围评论 3 -->
+                <div class="comment-item" data-id="3">
+                    <div class="comment-header">
+                        <span class="comment-user">用户jae</span>
+                        <span>06-12</span>
+                    </div>
+                    <div class="comment-body">印点寻人启事在小区周围发一发吧。</div>
+                    <div class="comment-actions">
+                        <span class="action-btn" onclick="likeComment(this)">👍 点赞(<span class="like-count">64</span>)</span>
+                        <span class="action-btn" onclick="showReplyForm(this, '用户jae')">💬 回复</span>
+                    </div>
+                    <div class="replies-container"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 更新当前时间为今天的日期
+        const now = new Date();
+        document.getElementById('current-time').innerText = `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日`;
+
+        let totalComments = 3;
+
+        // 更新评论总数
+        function updateCommentCount() {
+            document.getElementById('comment-count').innerText = totalComments;
+        }
+
+        // 点赞功能
+        function likeComment(btn) {
+            const countSpan = btn.querySelector('.like-count');
+            let currentLikes = parseInt(countSpan.innerText);
+            
+            if(!btn.classList.contains('liked')) {
+                currentLikes += 1;
+                btn.style.color = '#c92a2a'; // 变红表示已点赞
+                btn.classList.add('liked');
+            } else {
+                currentLikes -= 1;
+                btn.style.color = '#0066cc';
+                btn.classList.remove('liked');
+            }
+            countSpan.innerText = currentLikes;
+        }
+
+        // 提交主评论
+        function addMainComment() {
+            const input = document.getElementById('main-comment-input');
+            const text = input.value.trim();
+            if(!text) {
+                alert('请输入评论内容！');
+                return;
+            }
+
+            totalComments++;
+            updateCommentCount();
+
+            const commentList = document.getElementById('comment-list');
+            const newItem = document.createElement('div');
+            newItem.className = 'comment-item';
+            newItem.innerHTML = `
+                <div class="comment-header">
+                    <span class="comment-user">热心网友 (玩家)</span>
+                    <span>刚刚</span>
+                </div>
+                <div class="comment-body">${escapeHtml(text)}</div>
+                <div class="comment-actions">
+                    <span class="action-btn" onclick="likeComment(this)">👍 点赞(<span class="like-count">0</span>)</span>
+                    <span class="action-btn" onclick="showReplyForm(this, '热心网友 (玩家)')">💬 回复</span>
+                </div>
+                <div class="replies-container"></div>
+            `;
+            
+            // 新评论顶部分流
+            commentList.insertBefore(newItem, commentList.firstChild);
+            input.value = '';
+        }
+
+        // 显示回复输入框
+        function showReplyForm(btn, replyToUser) {
+            const commentItem = btn.closest('.comment-item');
+            
+            // 如果已经存在回复框，则不重复创建
+            if(commentItem.querySelector('.reply-form-container')) return;
+
+            const formContainer = document.createElement('div');
+            formContainer.className = 'reply-form-container';
+            formContainer.innerHTML = `
+                <div class="comment-form clearfix" style="margin-top:10px; margin-bottom:10px;">
+                    <textarea placeholder="回复 @${replyToUser}:" style="height:50px; font-size:14px;"></textarea>
+                    <button class="submit-btn" style="padding:4px 12px; font-size:13px;" onclick="submitReply(this)">提交回复</button>
+                    <button class="submit-btn" style="padding:4px 12px; font-size:13px; background:#888; margin-right:5px;" onclick="cancelReply(this)">取消</button>
+                </div>
+            `;
+            commentItem.appendChild(formContainer);
+        }
+
+        // 取消回复
+        function cancelReply(btn) {
+            btn.closest('.reply-form-container').remove();
+        }
+
+        // 提交回复
+        function submitReply(btn) {
+            const container = btn.closest('.reply-form-container');
+            const textarea = container.querySelector('textarea');
+            const replyText = textarea.value.trim();
+            
+            if(!replyText) {
+                alert('回复内容不能为空！');
+                return;
+            }
+
+            const commentItem = btn.closest('.comment-item');
+            const repliesContainer = commentItem.querySelector('.replies-container');
+
+            totalComments++;
+            updateCommentCount();
+
+            const replyItem = document.createElement('div');
+            replyItem.className = 'reply-item';
+            replyItem.innerHTML = `<strong>玩家:</strong> ${escapeHtml(replyText)}`;
+            
+            repliesContainer.appendChild(replyItem);
+            container.remove(); // 移除输入框
+        }
+
+        // 防止 XSS 注入的基本转义
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+</html>
