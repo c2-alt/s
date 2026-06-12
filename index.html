@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未知来电</title>
+    
+    <style>
+        /* 全局：黑色背景，居中 */
+        body {
+            margin: 0; padding: 0;
+            background-color: #121212;
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; overflow: hidden;
+            font-family: -apple-system, sans-serif;
+        }
+
+        /* 📱 手机外壳容器 📱 */
+        .phone-container {
+            width: 360px; /* 模拟手机宽度 */
+            height: 780px; /* 模拟手机高度 */
+            background-color: #000; /* 手机主屏幕背景 */
+            border: 12px solid #333; /* 模拟手机黑色边框 */
+            border-radius: 36px; /* 圆角 */
+            position: relative;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            overflow: hidden;
+        }
+
+        /* 顶部状态栏（时间、电量） */
+        .status-bar {
+            height: 30px;
+            padding: 0 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 12px; color: #888;
+            margin-top: 10px;
+        }
+
+        /* 手机桌面（App图标区） */
+        .home-screen {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4列图标 */
+            gap: 15px;
+        }
+
+        /* App图标样式 */
+        .app-icon {
+            display: flex; flex-direction: column; align-items: center;
+            cursor: pointer;
+        }
+        .icon-box {
+            width: 55px; height: 55px;
+            border-radius: 12px;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 28px;
+            background: linear-gradient(135deg, #ff5722, #ff9800); /* 橙色渐变 */
+        }
+        .locked-icon {
+            background: #333; /* 锁定的App变灰色 */
+            opacity: 0.5;
+        }
+        .icon-label {
+            font-size: 11px; color: #ccc;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        /* 底部Home条 */
+        .home-bar {
+            position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+            width: 120px; height: 4px;
+            background-color: #fff; border-radius: 2px;
+        }
+    </style>
+    </head>
+<body>
+
+    <div class="phone-container">
+        
+        <div class="status-bar">
+            <span class="time">23:48</span>
+            <span class="battery">⚡ 4%</span>
+        </div>
+
+        <div class="home-screen">
+            <div class="app-icon" id="news-app">
+                <div class="icon-box news-icon">📰</div>
+                <div class="icon-label">今日热点</div>
+            </div>
+
+            <div class="app-icon locked">
+                <div class="icon-box locked-icon">💬</div>
+                <div class="icon-label">加密群聊</div>
+            </div>
+            <div class="app-icon locked">
+                <div class="icon-box locked-icon">相机</div>
+                <div class="icon-label">相机</div>
+            </div>
+        </div>
+
+        <div class="home-bar"></div>
+
+    </div>
+
+</body>
+</html>
