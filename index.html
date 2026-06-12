@@ -260,12 +260,12 @@
 
         <!-- 新闻正文 -->
         <div class="news-content">
-            <p><strong>新海市讯</strong> 记者日前从本市东区派出所获悉，6月10日清晨，居住在新海市滨顺区幸福里小区的一名17岁女高中生张方晴被家人发现于家中卧室内失踪。家属随后向警方报案，目前警方已正式立案并展开全方位搜寻。</p>
+            <p><strong>新海市讯</strong> 记者日前从本市滨顺区派出所获悉，6月10日清晨，居住在新海市滨顺区幸福里小区的一名17岁女高中生张方晴被家人发现于家中卧室内失踪。家属随后向警方报案，目前警方已正式立案并展开全方位搜寻。</p>
             
             <!-- 新闻图片 -->
             <div class="img-container">
                 <!-- 引用用户提供的图片文件 -->
-                <img src=IMG_3238.jpeg" alt="失踪女高中生张方晴生活照">
+                <img src="IMG_3238.jpeg" alt="失踪女高中生张方晴生活照">
                 <div class="img-caption">图为失踪女高中生张方晴的近期登记照</div>
             </div>
 
@@ -286,7 +286,7 @@
         <!-- 互动评论区 -->
         <div class="comment-section">
             <h2>
-                <span>网友评论（<span id="comment-count">4</span>）</span>
+                <span>网友评论（<span id="comment-count">48</span>）</span>
                 <span style="font-size: 14px; color: #888;">注意：请理性发言，禁止造谣传谣</span>
             </h2>
 
@@ -296,7 +296,7 @@
                 <button class="submit-btn" onclick="addMainComment()">发表评论</button>
             </div>
 
-            <!-- 评论列表 -->
+            <!-- 热门评论列表 -->
             <div class="comment-list" id="comment-list">
                 
                 <!-- 预设恐怖氛围评论 1 -->
@@ -337,13 +337,33 @@
                         <span class="comment-user">用户jae</span>
                         <span>06-12</span>
                     </div>
-                    <div class="comment-body">印点寻人启事在小区周围发一发吧。</div>
+                    <div class="comment-body">多印点寻人启事在小区周围发一发吧。</div>
                     <div class="comment-actions">
                         <span class="action-btn" onclick="likeComment(this)">👍 点赞(<span class="like-count">64</span>)</span>
                         <span class="action-btn" onclick="showReplyForm(this, '用户jae')">💬 回复</span>
                     </div>
                     <div class="replies-container"></div>
                 </div>
+
+                <!-- 剧情核心线索评论：寻人建群 -->
+<div class="comment-item" data-id="story-trigger">
+    <div class="comment-header">
+        <span class="comment-user" style="color: #c92a2a;"好运连连</span>
+        <span>10分钟前</span>
+    </div>
+    <div class="comment-body">
+        大家好，我是晴晴的姐姐。为了收集线索，我们家属和热心同学建了一个寻人群。如果有住在幸福里小区附近、或者当晚看到过什么怪异情况的朋友，拜托大家进群提供线索吧！
+        <br>
+        <span class="action-btn" onclick="openGroupModal()" style="font-weight: bold; background: #e6f7ff; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-top: 5px;">
+            🔗 点击一键加入【寻照张方晴群聊】
+        </span>
+    </div>
+    <div class="comment-actions">
+        <span class="action-btn" onclick="likeComment(this)">👍 点赞(<span class="like-count">1024</span>)</span>
+    </div>
+    <div class="replies-container"></div>
+</div>
+
 
             </div>
         </div>
@@ -469,6 +489,20 @@
                 .replace(/"/g, "&quot;")
                 .replace(/'/g, "&#039;");
         }
+        // 确认加入群聊的函数（也就是我说的 joinGroup 函数）
+function joinGroup() {
+    closeGroupModal(); // 关闭弹窗
+    window.location.href = "chat.html"; // 让网页直接跳转到新建立的群聊分支
+}
+
+// 打开和关闭弹窗的配套功能，也顺便放这里
+function openGroupModal() {
+    document.getElementById('group-modal').style.display = 'flex';
+}
+function closeGroupModal() {
+    document.getElementById('group-modal').style.display = 'none';
+}
+
     </script>
 </body>
 </html>
