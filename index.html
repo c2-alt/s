@@ -1,168 +1,148 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>临江市未解档案 · 总目</title>
     <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background: #0a0a0a;
+            background-color: #0a0a0a;
             color: #c0c0c0;
             font-family: 'Courier New', monospace;
             padding: 20px;
             max-width: 900px;
             margin: 0 auto;
         }
-        h1 {
-            color: #8b0000;
-            border-bottom: 2px solid #8b0000;
-            padding-bottom: 10px;
-        }
-        .archive-stats {
-            background: #151515;
-            padding: 10px;
+
+        /* 隐藏页面的通用类 */
+        .page { display: none; }
+        .page.active { display: block; }
+
+        /* 1. 登录页样式 */
+        .login-container {
+            border: 2px solid #555;
+            padding: 40px 20px;
+            max-width: 400px;
+            margin: 100px auto 0;
             text-align: center;
-            margin: 20px 0;
-            font-size: 14px;
-        }
-        .year-section {
-            margin: 30px 0;
-        }
-        .year-title {
-            background: #1a1a1a;
-            padding: 8px 15px;
-            color: #8b0000;
-            font-size: 22px;
-            border-left: 4px solid #8b0000;
-            margin-bottom: 15px;
-        }
-        .case-list {
-            list-style: none;
-            padding-left: 20px;
-        }
-        .case-list li {
-            margin: 12px 0;
-            border-bottom: 1px dashed #2a2a2a;
-            padding-bottom: 8px;
-        }
-        .case-list a {
-            color: #c0c0c0;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        .case-list a:hover {
-            color: #8b0000;
-        }
-        .case-code {
-            color: #666;
-            font-size: 14px;
-            margin-left: 15px;
-        }
-        .forum-preview {
             background: #111;
-            border: 1px solid #2a2a2a;
-            padding: 15px;
-            margin: 30px 0;
         }
-        .forum-preview h3 {
-            color: #8b0000;
-            margin-top: 0;
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; font-size: 12px; margin-bottom: 5px; color: #888; }
+        .form-group input { width: 100%; padding: 10px; background: #000; border: 1px solid #444; color: #fff; }
+        .btn {
+            width: 100%; padding: 12px; background: transparent; border: 1px solid #c0c0c0; color: #c0c0c0;
+            cursor: pointer; font-weight: bold; margin-top: 10px;
         }
-        .forum-post {
-            border-bottom: 1px solid #2a2a2a;
-            padding: 10px 0;
+        .btn:hover { background: #c0c0c0; color: #000; }
+
+        /* 2. 档案库总目样式 */
+        h2 { border-bottom: 1px solid #444; padding-bottom: 10px; margin-bottom: 20px; color: #fff; }
+        .file-box {
+            border: 1px solid #333; padding: 20px; margin-bottom: 15px;
+            background: #121212; display: flex; justify-content: space-between; align-items: center;
         }
-        .username {
-            color: #6a9fb5;
-        }
-        .footer {
-            text-align: center;
-            color: #444;
-            margin-top: 40px;
-            font-size: 12px;
-        }
-        button {
-            background: #2a2a2a;
-            color: #c0c0c0;
-            border: 1px solid #8b0000;
-            padding: 8px 15px;
-            margin-top: 10px;
-        }
+        .file-box:hover { border-color: #666; }
+        .view-link { color: #fff; text-decoration: underline; cursor: pointer; }
+
+        /* 3. 案件详情样式 */
+        .container { border: 1px solid #444; padding: 20px; background: #111; line-height: 1.6; }
+        h1 { border-bottom: 2px solid #555; padding-bottom: 10px; margin-bottom: 15px; }
+        .back-btn { display: inline-block; margin-top: 20px; color: #888; cursor: pointer; text-decoration: underline; }
     </style>
 </head>
 <body>
 
-<h1>📁 临江市未解档案 · 总目</h1>
-
-<div class="archive-stats">
-    📊 当前已收录案件：6 起 | 最早档案：1998年 | 最后更新：2026-06-12
-</div>
-
-<!-- 2021年 -->
-<div class="year-section">
-    <div class="year-title">📍 2021年</div>
-    <ul class="case-list">
-        <li><a href="#">LJ-2103 · 殡仪馆3号冰柜异响</a><span class="case-code">[档案状态: 未结]</span></li>
-        <li><a href="#">LJ-2107 · 平市孕妇失踪案关联调查</a><span class="case-code">[档案状态: 调阅受阻]</span></li>
-    </ul>
-</div>
-
-<!-- 2019年 -->
-<div class="year-section">
-    <div class="year-title">📍 2019年</div>
-    <ul class="case-list">
-        <li><a href="#">LJ-1908 · 城北窗户案</a><span class="case-code">[档案状态: 符号关联]</span></li>
-        <li><a href="#">LJ-1912 · 殡仪馆值班室异常录像</a><span class="case-code">[档案状态: 待核实]</span></li>
-    </ul>
-</div>
-
-<!-- 2009年 -->
-<div class="year-section">
-    <div class="year-title">📍 2009年</div>
-    <ul class="case-list">
-        <li><a href="#">LJ-0903 · 老赵笔录（第一起）</a><span class="case-code">[档案状态: 部分缺页]</span></li>
-    </ul>
-</div>
-
-<!-- 1990年代 -->
-<div class="year-section">
-    <div class="year-title">📍 1990年代</div>
-    <ul class="case-list">
-        <li><a href="#">LJ-9801 · 平市旧货市场失踪案</a><span class="case-code">[档案状态: 纸质档案待数字化]</span></li>
-    </ul>
-</div>
-
-<!-- 特殊卷宗 -->
-<div class="year-section">
-    <div class="year-title">⚠️ 特别事务科 · 封存卷宗</div>
-    <ul class="case-list">
-        <li><a href="#">[权限不足] 卷宗编号: S-0001</a><span class="case-code">[需上级授权]</span></li>
-        <li><a href="#">[权限不足] 卷宗编号: S-0004</a><span class="case-code">[需上级授权]</span></li>
-    </ul>
-</div>
-
-<!-- 论坛热议区（弱关联展示） -->
-<div class="forum-preview">
-    <h3>💬 档案讨论区 · 近期热议</h3>
-    <div class="forum-post">
-        <p><span class="username">▶️ 用户_灵异调查局</span> <span style="color:#555;">2026-06-11</span></p>
-        <p>殡仪馆那个案子，3号冰柜的声音我在城北也听说过……是不是同一个东西？</p>
+    <div id="pageLogin" class="page active">
+        <div class="login-container">
+            <h2 style="border:none; margin-bottom:5px;">警局档案管理系统</h2>
+            <p style="color:#666; font-size:12px; margin-bottom:30px;">CITY POLICE DATABASE v4.02</p>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>警员编号 / BADGE NUMBER</label>
+                    <input type="text" id="badgeNumber" required placeholder="请输入9527..." autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>访问密钥 / ACCESS KEY</label>
+                    <input type="password" id="accessKey" required placeholder="请输入123456..." autocomplete="off">
+                </div>
+                <button type="submit" class="btn">请求接入系统</button>
+            </form>
+        </div>
     </div>
-    <div class="forum-post">
-        <p><span class="username">▶️ 平市_老警察</span> <span style="color:#555;">2026-06-10</span></p>
-        <p>那个“赦”字，平市90年代出现过一次。上面来人调过卷宗，后来就不让查了。</p>
-    </div>
-    <div class="forum-post">
-        <p><span class="username">▶️ 档案馆_实习生</span> <span style="color:#555;">2026-06-09</span></p>
-        <p>特别事务科到底是什么部门？我在档案系统里查不到这个单位的任何信息。</p>
-    </div>
-    <button>📜 查看更多讨论 (论坛模式)</button>
-</div>
 
-<div class="footer">
-    📌 本档案库持续更新 · 每一份卷宗均为独立案件 · 弱关联不代表因果关系<br>
-    当前版本 v0.3 | 下一批卷宗预计调阅时间: 待定
-</div>
+    <div id="pageIndex" class="page">
+        <h2>临江市未解档案 · 总目</h2>
+        <p style="margin-bottom: 20px; color: #666;">欢迎回来，警员 9527。当前系统级：【特许访问】</p>
+        
+        <div class="file-box">
+            <div>
+                <h3 style="color: #ff5555; margin-bottom: 5px;">未决案件：NO.0426 绝密事件</h3>
+                <p style="font-size:12px; color:#666;">状态：紧急 / 调查中</p>
+            </div>
+            <span class="view-link" onclick="showPage('pageCase0426')">点击查阅 >></span>
+        </div>
 
+        <div class="file-box">
+            <div>
+                <h3 style="color: #ffcc00; margin-bottom: 5px;">未决案件：NO.0512 恐吓事件</h3>
+                <p style="font-size:12px; color:#666;">状态：普通 / 线索征集</p>
+            </div>
+            <span class="view-link" onclick="showPage('pageCase0512')">点击查阅 >></span>
+        </div>
+    </div>
+
+    <div id="pageCase0426" class="page">
+        <div class="container">
+            <h1 style="color: #ff5555;">【绝密】案件编号：NO.0426</h1>
+            <p><strong>案件名称：</strong>迷雾酒吧失踪案</p>
+            <p><strong>案发时间：</strong>2026年4月26日</p>
+            <p><strong>案情简介：</strong>嫌疑人在午夜进入酒吧后凭空消失。现场只留下一张奇怪的塔罗牌和一串未接通的电话号码。</p>
+            <hr style="border-color: #333; margin: 15px 0;">
+            <p><strong>线索1：</strong>现场留下的牌是“明亮之星（The Star）”，但背面有焦黑的痕迹。</p>
+            <p><strong>线索2：</strong>监控录像在案发当时有3分钟的电磁干扰磁滞。</p>
+            <span class="back-btn" onclick="showPage('pageIndex')"><< 返回档案库</span>
+        </div>
+    </div>
+
+    <div id="pageCase0512" class="page">
+        <div class="container">
+            <h1 style="color: #ffcc00;">【机密】案件编号：NO.0512</h1>
+            <p><strong>案件名称：</strong>金融大厦匿名恐吓信事件</p>
+            <p><strong>案发时间：</strong>2026年5月12日</p>
+            <p><strong>案情简介：</strong>某知名保险公司高管收到一封没有寄件人地址的信件，信中预言了三日后的停电事故。</p>
+            <hr style="border-color: #333; margin: 15px 0;">
+            <p><strong>线索1：</strong>信纸带有特殊的东方玉兰香水味。</p>
+            <span class="back-btn" onclick="showPage('pageIndex')"><< 返回档案库</span>
+        </div>
+    </div>
+
+    <script>
+        // 控制页面切换的魔法函数
+        function showPage(pageId) {
+            // 隐藏所有页面
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            // 显示目标页面
+            document.getElementById(pageId).classList.add('active');
+            // 自动滚回顶部
+            window.scrollTo(0, 0);
+        }
+
+        // 登录验证
+        function handleLogin(event) {
+            event.preventDefault();
+            const badge = document.getElementById('badgeNumber').value;
+            const key = document.getElementById('accessKey').value;
+
+            if(badge === "9527" && key === "123456") {
+                showPage('pageIndex'); // 登录成功，切换到总目
+            } else {
+                alert("【访问拒绝】警员编号或密钥错误。");
+            }
+        }
+    </script>
 </body>
 </html>
