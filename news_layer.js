@@ -160,8 +160,21 @@ function publishMainComment() {
     textarea.value = "";
 }
 
-// 🔴 特殊账号触发逻辑（第一层限定：先不做主页内容，仅做接口留空与提示）
+// 🔴 特殊账号修改：名字更换为“斩尽天下钕”，并修改触发逻辑
+// 请确保 initialComments 数据集里的 user 也同步改成了 "斩尽天下钕"
+
 function triggerClueProfile() {
-    // 这里我们先使用一个纯弹窗提示。当你对我说“我们要开始做第二层”时，我们再把这里改成加载第二层的 JS。
-    alert("系统检测：你点击了核心特异账号【逆流的鲲】的头像。第一层线索拦截成功！准备好之后请指令我创建第二层（主页层）脚本。");
+    // 动态引入第二层脚本，并触发它的初始化函数
+    if (typeof initBlogLayer === "function") {
+        initBlogLayer();
+    } else {
+        // 第一次点击时，动态加载 blog_layer.js 文件
+        const script = document.createElement("script");
+        script.src = "blog_layer.js";
+        script.onload = () => {
+            initBlogLayer();
+        };
+        document.body.appendChild(script);
+    }
 }
+
