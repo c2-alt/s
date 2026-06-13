@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华夏时讯网 - 权威华语新闻门户</title>
+    <style>
+        :root {
+            --portal-red: #cc0000;
+            --text-main: #333333;
+            --text-sub: #777777;
+            --border-gray: #e6e6e6;
+            --link-blue: #075bb0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #fcfcfc; color: var(--text-main); }
+
+        /* 丰富的门户网站抬头样式 */
+        .portal-header { background: #fff; border-bottom: 2px solid var(--portal-red); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .header-top { background: #333; color: #ccc; font-size: 12px; padding: 6px 20px; display: flex; justify-content: space-between; }
+        .header-top a { color: #ccc; text-decoration: none; margin-left: 15px; }
+        .header-top a:hover { color: #fff; }
+        .header-main { max-width: 1000px; margin: 0 auto; padding: 20px 15px; display: flex; align-items: center; justify-content: space-between; }
+        .portal-logo { font-size: 26px; font-weight: 900; color: var(--portal-red); letter-spacing: 1px; cursor: pointer; text-decoration: none; }
+        .portal-nav { display: flex; gap: 20px; font-size: 16px; font-weight: bold; }
+        .portal-nav span { cursor: pointer; transition: color 0.2s; padding: 4px 8px; }
+        .portal-nav span:hover, .portal-nav span.active { color: var(--portal-red); }
+        .portal-search { display: flex; }
+        .portal-search input { padding: 6px 10px; border: 1px solid #ccc; border-right: none; font-size: 13px; outline: none; width: 180px; }
+        .portal-search button { background: var(--portal-red); color: white; border: none; padding: 0 15px; font-size: 13px; cursor: pointer; }
+
+        /* 新闻排版 */
+        .main-layout { max-width: 1000px; margin: 25px auto; padding: 0 15px; display: flex; gap: 30px; }
+        .article-area { flex: 1; background: #fff; padding: 35px; border: 1px solid #eee; }
+        .article-title { font-size: 26px; line-height: 1.4; font-weight: bold; color: #000; margin-bottom: 20px; }
+        .article-meta { font-size: 13px; color: var(--text-sub); border-bottom: 1px solid var(--border-gray); padding-bottom: 15px; margin-bottom: 25px; display: flex; gap: 20px; }
+        .article-body p { font-size: 16px; line-height: 1.8; text-indent: 2em; margin-bottom: 20px; text-align: justify; }
+
+        /* 评论区排版 */
+        .comment-section { margin-top: 50px; border-top: 2px solid #333; padding-top: 30px; }
+        .comment-title { font-size: 18px; font-weight: bold; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
+        
+        /* 发帖区 */
+        .comment-box-root { display: flex; gap: 15px; background: #f8f9fa; padding: 20px; border: 1px solid #e9ecef; margin-bottom: 30px; }
+        .user-avatar-placeholder { width: 40px; height: 40px; border-radius: 50%; background: #6c757d; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; }
+        .comment-input-wrap { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+        .comment-input-wrap textarea { width: 100%; height: 80px; padding: 12px; border: 1px solid #ced4da; border-radius: 4px; resize: none; font-size: 14px; outline: none; }
+        .comment-input-wrap button { align-self: flex-end; background: var(--portal-red); color: white; border: none; padding: 8px 24px; border-radius: 4px; font-size: 14px; cursor: pointer; font-weight: bold; }
+
+        /* 评论条目区域 */
+        #global-comment-list { display: flex; flex-direction: column; }
+        .comment-item-node { display: flex; gap: 15px; padding: 20px 0; border-bottom: 1px solid var(--border-gray); }
+        .c-avatar-node { width: 40px; height: 40px; border-radius: 50%; background: #adbcce; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px; flex-shrink: 0; }
+        .c-main-node { flex: 1; }
+        .c-user-info { font-size: 14px; font-weight: bold; color: #444; margin-bottom: 6px; }
+        .c-text-content { font-size: 15px; line-height: 1.6; color: var(--text-main); margin-bottom: 10px; text-align: justify; }
+        
+        /* 互动动作条 */
+        .c-actions-bar { font-size: 12px; color: var(--text-sub); display: flex; gap: 20px; align-items: center; }
+        .action-btn-item { cursor: pointer; display: flex; align-items: center; gap: 4px; user-select: none; }
+        .action-btn-item:hover { color: var(--portal-red); }
+
+        /* 二级嵌套评论 */
+        .nested-sub-list { background: #f5f6f7; padding: 12px 15px; margin-top: 12px; border-radius: 4px; font-size: 14px; display: flex; flex-direction: column; gap: 8px; }
+        .nested-sub-item { line-height: 1.5; padding: 4px 0; border-bottom: 1px dashed #e9ecef; }
+        .nested-sub-item:last-child { border-bottom: none; }
+        .nested-user { font-weight: bold; color: #555; }
+
+        /* 动态回复槽 */
+        .dynamic-reply-box { margin-top: 12px; display: none; gap: 10px; }
+        .dynamic-reply-box input { flex: 1; padding: 8px 12px; border: 1px solid #ced4da; border-radius: 4px; font-size: 13px; outline: none; }
+        .dynamic-reply-box button { background: #495057; color: white; border: none; padding: 0 16px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+
+        /* 侧边栏小排版 */
+        .sidebar-area { width: 280px; }
+        .sidebar-panel { background: #fff; border: 1px solid #eee; padding: 20px; margin-bottom: 20px; }
+        .sidebar-panel h3 { font-size: 15px; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 2px solid var(--portal-red); }
+        .sidebar-list-item { display: block; font-size: 14px; color: #444; text-decoration: none; margin-bottom: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; }
+        .sidebar-list-item:hover { color: var(--portal-red); }
+
+        @media (max-width: 800px) {
+            .main-layout { flex-direction: column; }
+            .sidebar-area { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 丰富顶栏：支持互动按钮与多频道 -->
+    <div class="portal-header">
+        <div class="header-top">
+            <div>欢迎访问华夏时讯网！</div>
+            <div>
+                <a href=" " onclick="alert('已切换至简体中文')">简体</a > | 
+                <a href="#" onclick="alert('已切换至繁体中文')">繁體</a > | 
+                <a href="#" onclick="alert('正在调取客户端...')">手机版</a >
+            </div>
+        </div>
+        <div class="header-main">
+            <a class="portal-logo" href="javascript:void(0)">CHINANEWS</a >
+            <div class="portal-nav">
+                <span class="active">首页</span>
+                <span onclick="alert('正在加载国内新闻频道...')">国内</span>
+                <span onclick="alert('正在加载国际新闻频道...')">国际</span>
+                <span onclick="alert('正在加载社会法制频道...')">社会</span>
+                <span onclick="alert('正在加载军事评论频道...')">军事</span>
+            </div>
+            <div class="portal-search">
+                <input type="text" placeholder="输入关键字搜索...">
+                <button onclick="alert('搜索功能暂未开放')">搜索</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主布局 -->
+    <div class="main-layout">
+        <!-- 左侧新闻正文 -->
+        <div class="article-area">
+            <h1 class="article-title">沧海市发生一起重大刑事案件：高二男学生持刀杀害亲生父母，自杀未遂已获救</h1>
+            <div class="article-meta">
+                <span>发布时间：2026-06-13 09:15</span>
+                <span>来源：沧海法制报</span>
+                <span>分类：社会法制</span>
+            </div>
+            
+            <div class="article-body">
+                <p>本报讯（记者 齐时雨）6月12日23时许，沧海市公安局高新区分局接到群众报警，称辖区内学府景苑小区某住宅内发生持刀伤人事件。接报后，辖区派出所及刑侦大队民警迅速赶赴现场处置。</p >
+                <p>经初步调查，犯罪嫌疑人李某（男，17岁，沧海市某中学高二在读学生）因家庭内部矛盾，在住所内持刀将其亲生父母残忍杀害。作案后，嫌疑人李某企图割腕畏罪自杀，被及时破门的民警当场控制，并紧急送往沧海市第一人民医院抢救。</p >
+                <p>据医院方面最新消息，经过连夜手术抢救，李某目前生命体征平稳，暂无生命危险。案件的具体作案动机、凶器来源及详细经过，相关部门正在全力开展进一步侦查。</p >
+            </div>
+
+            <!-- 新闻互动评论区 -->
+            <div class="comment-section">
+                <div class="comment-title">
+                    <span>网友参与评论</span>
+                    
+                </div>
+                
+                <!-- 新闻主发言框 -->
+                <div class="comment-box-root">
+                    <div class="user-avatar-placeholder">游客</div>
+                    <div class="comment-input-wrap">
+                        <textarea id="main-comment-textarea" placeholder="请自觉遵守互联网安全法律法规..."></textarea>
+                        <button onclick="publishMainComment()">提交评论</button>
+                    </div>
+                </div>
+
+                <!-- 核心：由 news_layer.js 渲染的动态评论流 -->
+                <div id="global-comment-list"></div>
+            </div>
+        </div>
+
+        <!-- 右侧边栏 -->
+        <div class="sidebar-area">
+            <div class="sidebar-panel">
+                <h3>🔥 24小时热点排行</h3>
+                <span class="sidebar-list-item" onclick="alert('已在当前页')">1. 沧海学府景苑发生恶性刑事要案</span>
+                <span class="sidebar-list-item" onclick="alert('相关部门正在调查')">2. 学生心理健康状况引发社会担忧</span>
+                <span class="sidebar-list-item" onclick="alert('404')">3. 曝男顶流被多名富婆包养</span>
+                <span class="sidebar-list-item" onclick="alert('注意安全')">4. 本市多地发布大风黄色预警信号</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入第一层的核心互动脚本 -->
+    <script src="news_layer.js"></script>
+</body>
+</html>
