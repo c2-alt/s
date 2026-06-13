@@ -31,7 +31,7 @@ const blogPosts = {
     }
 };
 
-// 2. 群聊分栏数据（3个满员，1个可加入但有暗号）
+// 2. 群聊分栏数据（3个满员/解散，1个可加入但有暗号）
 const groupData = [
     { id: "g_1", name: "莫言的书迷们", desc: "莫言老师的书迷聚集群", status: "群员已满" },
     { id: "g_2", name: "我的26岁女房客阅读交流群", desc: "求上天赐我米彩乐瑶简薇…", status: "群聊已解散" },
@@ -65,7 +65,7 @@ function initBlogLayer() {
                 <div style="width: 70px; height: 70px; background: #444; border-radius: 50%; border: 3px solid #fff; margin-top: -45px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 24px;">斩</div>
                 <div>
                     <h2 style="font-size: 18px; font-weight: bold;">@斩尽天下钕</h2>
-                    <p style="font-size: 12px; color: #777; margin-top: 4px;">简介：点进我主页那一刻说明你已经输了。</p >
+                    <p style="font-size: 12px; color: #777; margin-top: 4px;">简介：点进我主页那一刻说明你已经输了。</p>
                 </div>
             </div>
         </div>
@@ -121,7 +121,7 @@ function switchBlogTab(tab) {
     }
 }
 
-// 6. 渲染动态（支持文字、转发样式与点击进入详情）
+// 6. 渲染动态（支持文字、转发样式与点击进入详情，并修复主动态点赞数字不加Bug）
 function renderPostList() {
     const container = document.getElementById("blog-panel-posts");
     container.innerHTML = "";
@@ -146,14 +146,20 @@ function renderPostList() {
             ${bodyHTML}
             <div style="margin-top: 15px; border-top: 1px solid #f2f2f2; padding-top: 10px; display: flex; font-size: 13px; color: #666;">
                 <div style="width: 50%; text-align: center; cursor: pointer;" onclick="openPostDetail(${id})">💬 评论 ${post.commentsCount}</div>
-                <div style="width: 50%; text-align: center; cursor: pointer;" onclick="alert('点赞成功')">👍 赞 ${post.likes}</div>
+                <div style="width: 50%; text-align: center; cursor: pointer;" onclick="handleBlogMainLike(${id}, this)">👍 赞 <span>${post.likes}</span></div>
             </div>
         `;
         container.appendChild(card);
     });
 }
 
-// 7. 进入帖子独立详情页（含对线评论区与全套点赞回复功能）
+// 主动态卡片点赞真实增加函数
+function handleBlogMainLike(id, element) {
+    blogPosts[id].likes += 1;
+    element.querySelector("span").innerText = blogPosts[id].likes;
+}
+
+// 7. 进入帖子独立详情页（含对线评论区与修复点赞自增功能）
 function openPostDetail(postId) {
     document.getElementById("layer2-blog-container").style.display = "none";
     
@@ -178,7 +184,7 @@ function openPostDetail(postId) {
                     <div style="font-size: 13px; font-weight: bold; color: #444;">${c.user}</div>
                     <div style="font-size: 14px; margin-top: 4px; color: #222; text-align: justify;">${c.text}</div>
                     <div style="margin-top: 8px; display: flex; gap: 15px; font-size: 12px; color: #888;">
-                        <span style="cursor: pointer;" onclick="alert('点赞成功')">👍 ${c.likes}</span>
+                        <span style="cursor: pointer;" onclick="handleBlogSubLike(${postId}, ${idx}, this)">👍 <span>${c.likes}</span></span>
                         <span style="cursor: pointer;" onclick="togglePostReplyInput('${postId}_${idx}')">💬 回复</span>
                     </div>
                     <!-- 独立详情页的二级嵌套回复框 -->
@@ -209,6 +215,13 @@ function openPostDetail(postId) {
         </div>
     `;
     window.scrollTo(0, 0);
+}
+
+// 详情页评论点赞真实自增函数
+function handleBlogSubLike(postId, commentIndex, element) {
+    const comment = blogPosts[postId].comments[commentIndex];
+    comment.likes += 1;
+    element.querySelector("span").innerText = comment.likes;
 }
 
 function closePostDetail() {
@@ -250,10 +263,12 @@ function submitDetailMainComment(postId) {
             <div style="margin-top: 8px; font-size: 12px; color: #888;">刚刚</div>
         </div>`;
     stream.insertBefore(node, stream.firstChild);
+    
+    blogPosts[postId].commentsCount += 1;
     input.value = "";
 }
 
-// 8. 渲染群聊列表（3满员，1等待暗号验证）
+// 8. 渲染群聊列表（🟢 修复：精确匹配你的中文状态文本，不再产生错误拦截）
 function renderGroupList() {
     const container = document.getElementById("blog-panel-groups");
     container.innerHTML = "";
@@ -262,9 +277,9 @@ function renderGroupList() {
         const item = document.createElement("div");
         item.style.cssText = "background: #fff; border: 1px solid #e6e6e6; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; cursor: pointer;";
         
-        // 绑定群点击事件
-        if (g.status === "full") {
-            item.onclick = () => alert(`【系统提示】：“${g.name}” 目前人数已满（500/500），暂时无法申请加入。`);
+        // 🟢 修复：这里改成判断非验证群，其他不满足条件的群统一弹出各自的拦截提示
+        if (g.status !== "verify") {
+            item.onclick = () => alert(`【系统提示】：“${g.name}” 的状态为【${g.status}】，当前无法申请加入。`);
         } else {
             item.onclick = () => triggerGroupVerification();
         }
@@ -277,32 +292,25 @@ function renderGroupList() {
                     <div style="font-size: 12px; color: #888; margin-top: 4px;">${g.desc}</div>
                 </div>
             </div>
-            <div style="font-size: 12px; color: ${g.status === 'full' ? '#999' : '#e67e22'}; font-weight: bold;">
-                ${g.status === "full" ? "已满员" : "申请加入"}
+            <div style="font-size: 12px; color: ${g.status === 'verify' ? '#e67e22' : '#999'}; font-weight: bold;">
+                ${g.status === "verify" ? "申请加入" : g.status}
             </div>
         `;
         container.appendChild(item);
     });
 }
 
-// 9. 🔴 核心机制：极端群聊的暗号验证码拦截器
+// 9. 🔴 核心机制：极端群聊的暗号验证码拦截器（🟢 修复：完美闭合了语法符号残渣）
 function triggerGroupVerification() {
-    // 题目设定：这里我们使用了一个著名的极端恶性案件、或者经典的极端主义填空作为暗号。
-    // 谜题：2014年震惊世界的加州伊斯拉维斯塔大规模枪击案（针对女性）的凶手，被称为极端非自愿单身者（Incels）的“精神教父”。
-    // 他的名字是埃利奥特·罗杰（Elliot Rodger）。
-    // 暗号谜题：给出他的姓氏“罗杰”，提问他的名字是什么？（或者反过来）
-    
     const hint = "【密保验证】\n请输入精神教父的英文名 \n提示：姓氏为‘罗杰（Rodger）’，请输入他的名字（六个字母）";
-    
     const answer = prompt(hint);
-    
     if (answer === null) return; // 玩家取消
 
-    // 答案去除空格，支持大小写或精确简写
     const finalAns = answer.trim();
 
     if (finalAns === "埃利奥特" || finalAns.toLowerCase() === "elliot") {
-        alert("【验证通过】\n);
+        alert("【验证通过】\n纯洁性核验成功。你已被批准加入‘拨乱反正’群组。"); // 🟢 修复：把之前丢失的半边括号补齐
+        
         // 留空接口：在这里触发第三层（进入群聊内页对话交互）
         if (typeof initChatLayer === "function") {
             initChatLayer();
