@@ -515,6 +515,61 @@ function closeGroupModal() {
         </div>
     </div>
 </div>
+<!-- ==================== 剧情追加：调查方向选择弹窗 ==================== -->
+<div id="investigate-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 10000;">
+    <div style="background: #1a1a1a; color: #fff; padding: 30px; border-radius: 8px; width: 85%; max-width: 400px; text-align: center; border: 1px solid #333; font-family: sans-serif;">
+        <h3 style="margin-top: 0; color: #c92a2a; letter-spacing: 1px; font-size: 20px;">🔍 调查方向选择</h3>
+        <p style="font-size: 14px; color: #aaa; margin-bottom: 25px; line-height: 1.6;">从群聊中获得的信息扑朔迷离。作为调查者，你决定接下来的第一步行动是：</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <!-- 分支一 -->
+            <button style="padding: 12px; background: #2b2b2b; color: white; border: 1px solid #444; border-radius: 4px; cursor: pointer; text-align: left; font-size: 15px;" 
+                    onclick="selectDirection('home')">
+                🏠 1. 前往【张方晴家中】调查（询问姐姐和其他家人、搜寻卧室细节）
+            </button>
+            
+            <!-- 分支二 -->
+            <button style="padding: 12px; background: #2b2b2b; color: white; border: 1px solid #444; border-radius: 4px; cursor: pointer; text-align: left; font-size: 15px;" 
+                    onclick="selectDirection('property')">
+                🏢 2. 前往【物业监控室】调查（调取录像、走访小区周边）
+            </button>
+            
+            <!-- 分支三 -->
+            <button style="padding: 12px; background: #2b2b2b; color: white; border: 1px solid #444; border-radius: 4px; cursor: pointer; text-align: left; font-size: 15px;" 
+                    onclick="selectDirection('school')">
+                🏫 3. 前往【新海三中】调查（寻找张方晴的同学和朋友，打听最近情况）
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 自动检查玩家是不是从群聊退出来的
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        // 如果网址后面带着 ?from=chat，说明是从群聊点退出回来的
+        if (urlParams.get('from') === 'chat') {
+            // 延迟 0.5 秒弹出，给玩家一点心理缓冲
+            setTimeout(() => {
+                document.getElementById('investigate-modal').style.display = 'flex';
+            }, 500);
+        }
+    });
+
+    // 玩家点击某个调查方向后的逻辑
+    function selectDirection(direction) {
+        if (direction === 'home') {
+            alert('你决定前往张方晴家中。深吸一口气，你敲开了幸福里小区302室的大门……（这里可以写你后面想跳转的剧情网页，比如 window.location.href = "scene_home.html"）');
+        } else if (direction === 'property') {
+            alert('你来到了小区的物业管理处。昏暗的保安室内，值班的大爷和物业人员里三层外三层围满监控大屏，物业经理正脸色铁青地盯着屏幕……');
+        } else if (direction === 'school') {
+            alert('你来到了新海第三高级中学。正值午休，你在高二（3）班的走廊尽头找到了张方晴的好友蔡学璇……');
+        }
+        //  选择完后关闭弹窗
+        document.getElementById('investigate-modal').style.display = 'none';
+    }
+</script>
+<!-- ==================== 剧情追加结束 ==================== -->
 
 </body>
 </html>
