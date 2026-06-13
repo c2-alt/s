@@ -221,4 +221,95 @@ function togglePostReplyInput(id) {
     box.style.display = box.style.display === "flex" ? "none" : "flex";
 }
 
-fun
+function submitPostSubReply(id, targetUser) {
+    const box = document.getElementById(`reply-box-${id}`);
+    const input = box.querySelector("input");
+    if (!input.value.trim()) return;
+
+    const subList = document.getElementById(`sub-list-${id}`);
+    subList.style.display = "flex";
+    const item = document.createElement("div");
+    item.innerHTML = `<strong>匿名网友</strong> 回复 <strong>@${targetUser}</strong>：${input.value.trim()}`;
+    subList.appendChild(item);
+    input.value = "";
+    box.style.display = "none";
+}
+
+function submitDetailMainComment(postId) {
+    const input = document.getElementById("detail-main-input");
+    if (!input.value.trim()) return;
+
+    const stream = document.getElementById("detail-comment-stream");
+    const node = document.createElement("div");
+    node.style.cssText = "display: flex; gap: 12px; padding: 15px 0; border-bottom: 1px solid #eee;";
+    node.innerHTML = `
+        <div style="width: 32px; height: 32px; background: #555; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: bold;">客</div>
+        <div style="flex: 1;">
+            <div style="font-size: 13px; font-weight: bold; color: #444;">游客_匿名</div>
+            <div style="font-size: 14px; margin-top: 4px; color: #222;">${input.value.trim()}</div>
+            <div style="margin-top: 8px; font-size: 12px; color: #888;">刚刚</div>
+        </div>`;
+    stream.insertBefore(node, stream.firstChild);
+    input.value = "";
+}
+
+// 8. 渲染群聊列表（3满员，1等待暗号验证）
+function renderGroupList() {
+    const container = document.getElementById("blog-panel-groups");
+    container.innerHTML = "";
+
+    groupData.forEach(g => {
+        const item = document.createElement("div");
+        item.style.cssText = "background: #fff; border: 1px solid #e6e6e6; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; cursor: pointer;";
+        
+        // 绑定群点击事件
+        if (g.status === "full") {
+            item.onclick = () => alert(`【系统提示】：“${g.name}” 目前人数已满（500/500），暂时无法申请加入。`);
+        } else {
+            item.onclick = () => triggerGroupVerification();
+        }
+
+        item.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div style="width: 45px; height: 45px; background: #34495e; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">群</div>
+                <div>
+                    <div style="font-weight: bold; font-size: 14px; color: #333;">${g.name}</div>
+                    <div style="font-size: 12px; color: #888; margin-top: 4px;">${g.desc}</div>
+                </div>
+            </div>
+            <div style="font-size: 12px; color: ${g.status === 'full' ? '#999' : '#e67e22'}; font-weight: bold;">
+                ${g.status === "full" ? "已满员" : "申请加入"}
+            </div>
+        `;
+        container.appendChild(item);
+    });
+}
+
+// 9. 🔴 核心机制：极端群聊的暗号验证码拦截器
+function triggerGroupVerification() {
+    // 题目设定：这里我们使用了一个著名的极端恶性案件、或者经典的极端主义填空作为暗号。
+    // 谜题：2014年震惊世界的加州伊斯拉维斯塔大规模枪击案（针对女性）的凶手，被称为极端非自愿单身者（Incels）的“精神教父”。
+    // 他的名字是埃利奥特·罗杰（Elliot Rodger）。
+    // 暗号谜题：给出他的姓氏“罗杰”，提问他的名字是什么？（或者反过来）
+    
+    const hint = "【密保验证】\n请输入精神教父的英文名 \n提示：姓氏为‘罗杰（Rodger）’，请输入他的名字（六个字母）";
+    
+    const answer = prompt(hint);
+    
+    if (answer === null) return; // 玩家取消
+
+    // 答案去除空格，支持大小写或精确简写
+    const finalAns = answer.trim();
+
+    if (finalAns === "埃利奥特" || finalAns.toLowerCase() === "elliot") {
+        alert("【验证通过】\n);
+        // 留空接口：在这里触发第三层（进入群聊内页对话交互）
+        if (typeof initChatLayer === "function") {
+            initChatLayer();
+        } else {
+            alert("【内网警报】群聊交互模块正在搭建中...（请指令我开启第三层开发）");
+        }
+    } else {
+        alert("【验证失败】\n暗号错误，系统已锁定你的IP，滚出去！");
+    }
+}
