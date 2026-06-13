@@ -20,7 +20,15 @@
 <body>
 
     <div id="chat-window">
-        <div class="chat-header">寻找张方晴群聊 (25人)</div>
+        <div class="chat-header" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px;">
+    <!-- 左上角的退出返回键 -->
+    <span onclick="window.location.href='index.html?from=chat'" style="cursor: pointer; font-size: 14px; background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 4px;">← 退出</span>
+    
+    <span>寻找张方晴群聊 (25人)</span>
+    
+    <!-- 右边放一个空白占位，为了让标题居中 -->
+    <span style="width: 42px;"></span>
+</div>
         <div class="chat-body" id="chat-body">
             <div class="chat-system-tip">2026年6月10日 好运连连 创建了群聊</div>
             <div class="chat-system-tip">好运连连 邀请了 静水流深、福满一生、A幸福里物业李经理、章警官、远行、豆芽蔡呀等人加入群聊</div>
