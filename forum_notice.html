@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>违规公示 - 共鸣社区</title>
+    <style>
+        /* 全局低饱和暖色调 */
+        body {
+            background-color: #fcfaf2;
+            color: #5a504a;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+        }
+
+        /* 顶部返回导航 */
+        .header-bar {
+            background-color: #f4eae1;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eadecf;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back-btn {
+            color: #7c6d65;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            color: #bfa391;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #61534b;
+        }
+
+        /* 核心内容区 */
+        .main-content {
+            max-width: 750px;
+            margin: 30px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: #61534b;
+            margin: 0;
+            border-bottom: 2px solid #eadecf;
+            padding-bottom: 10px;
+        }
+
+        /* 帖子主卡片 */
+        .post-card {
+            background-color: #ffffff;
+            border: 1px solid #f1eae2;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(180, 160, 140, 0.04);
+            position: relative;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #9c8c82;
+            margin-bottom: 15px;
+        }
+
+        .post-author {
+            font-weight: bold;
+            color: #c0392b; /* 用暗红色标记违规发帖人 */
+        }
+
+        .post-title {
+            font-size: 18px;
+            color: #61534b;
+            margin: 0 0 15px 0;
+            font-weight: bold;
+        }
+
+        .post-text {
+            font-size: 15px;
+            color: #5a504a;
+            white-space: pre-wrap;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        /* 【系统锁定提示条】 */
+        .system-lock-banner {
+            background-color: #fce4e4; /* 浅淡红底 */
+            border: 1px solid #f5c6c6;
+            color: #c0392b;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 互动数据栏（锁定状态下变灰且不可点击） */
+        .post-actions {
+            display: flex;
+            gap: 20px;
+            border-top: 1px solid #faf8f2;
+            padding-top: 15px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: #bfa391;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0;
+            outline: none;
+        }
+
+        /* 评论区样式 */
+        .comment-section {
+            background-color: #faf8f2;
+            border-radius: 8px;
+            padding: 0 20px;
+            border: 1px solid transparent;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+            margin-top: 0;
+        }
+
+        .comment-section.open {
+            padding: 15px 20px;
+            max-height: 2000px;
+            border-color: #f5ede2;
+            margin-top: 15px;
+        }
+
+        .comment-section-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #8c7e74;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #f1eae2;
+            padding-bottom: 5px;
+        }
+
+        .comment-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed #eedfcb;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .comment-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .comment-user {
+            font-size: 13px;
+            font-weight: bold;
+            color: #7c6d65;
+        }
+
+        /* 医生专属高亮样式 */
+        .comment-user.doctor-admin {
+            color: #7c6d65;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .admin-badge {
+            background-color: #dbcfc2;
+            color: #61534b;
+            font-size: 11px;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-weight: normal;
+        }
+
+        .comment-text {
+            font-size: 14px;
+            color: #5a504a;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶端导航 -->
+    <div class="header-bar">
+        <a class="back-btn" onclick="history.back()">ㄑ 返回社区分区</a >
+        <div class="page-title">共鸣社区 ➔ 违规公示</div>
+    </div>
+
+    <!-- 主体内容 -->
+    <div class="main-content">
+        
+        <h1 class="section-title">📢 违规公示</h1>
+
+        <!-- 唯一控诉帖 -->
+        <div class="post-card">
+            <div class="post-header">
+                <span class="post-author">发布者：蓝鸟（已被封禁）</span>
+                <span></span>
+            </div>
+            <h2 class="post-title">钟凌骁医生毫无医德！欺骗病人和家属！</h2>
+            <div class="post-text">我是“蓝鸟”的父亲！我女儿今年才21岁！她因为严重的PTSD和抑郁症，在钟凌骁这里接受了8个月的治疗。前阵子她说自己一点痛苦都感受不到了，全家都以为她要好起来了！
+结果前天晚上，她吃完药，在浴缸里割腕自杀了！她在遗言里写着什么解脱、引渡、天国！我翻遍了她的浏览记录，她自杀前一直在听钟医生给她的特制催眠音频！
+你这根本不是心理治疗，你这是洗脑！你利用我女儿的信任，把她往死路上推！请钟医生站出来给我一个解释！否则我一定报警！</div>
+            
+            <!-- 红色锁定提示栏 -->
+            <div class="system-lock-banner">
+                <span>🚫 【系统提示】：该帖因发表不实言论、恶意诽谤，违反社区管理条例，已被管理员永久锁定并做封禁处理，禁止回复。</span>
+            </div>
+
+            <div class="post-actions">
+                <button class="action-btn" style="cursor: not-allowed; opacity: 0.6;">❤️ 0</button>
+                <button class="action-btn" onclick="toggleComments('notice-comments')">💬 查看历史评论 (33)</button>
+            </div>
+
+            <div id="notice-comments" class="comment-section">
+                <div class="comment-section-title">历史评论（只读）</div>
+                
+                <div class="comment-item">
+                    <div class="comment-user">丹丹幸运神</div>
+                    <div class="comment-text">叔叔你冷静点吧，钟医生治好了我们这么多人，你怎么能说她是骗子？医生也不是神，蓝鸟是自己病情反复，家属平时不关心，出了事就赖医生？</div>
+                </div>
+
+                <div class="comment-item">
+                    <div class="comment-user">爱睡觉的钻石</div>
+                    <div class="comment-text">我看你女儿就是被你给逼死的，说话疯疯癫癫，情绪还不稳定。</div>
+                </div>
+
+                <!-- 钟凌骁回复 -->
+                <div class="comment-item">
+                    <div class="comment-user doctor-admin">钟凌骁 <span class="admin-badge">管理员</span></div>
+                    <div class="comment-text" style="font-weight: 500;">您好，对于她的离世，我深感痛心。但因家属不支付后续的巩固治疗费用，自行中断患者治疗过程，导致患者没有得到正规的疗程巩固，病情出现断崖式反复。请家属保持理智，切勿诽谤。</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleComments(commentId) {
+            var el = document.getElementById(commentId);
+            el.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
