@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>共鸣社区 - 钟凌骁心理咨询工作室</title>
+    <style>
+        /* 保持全局低饱和、柔和温暖的色调 */
+        body {
+            background-color: #fcfaf2; /* 柔和米白色 */
+            color: #5a504a; /* 低饱和深褐 */
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif;
+            line-height: 1.6;
+        }
+
+        /* 顶部返回导航 */
+        .header-bar {
+            background-color: #f4eae1; /* 柔和燕麦色 */
+            padding: 15px 20px;
+            border-bottom: 1px solid #eadecf;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back-btn {
+            color: #7c6d65;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            color: #bfa391;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #61534b;
+        }
+
+        /* 核心内容布局 */
+        .main-content {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .forum-header {
+            margin-bottom: 30px;
+        }
+
+        .forum-header h1 {
+            margin: 0 0 8px 0;
+            font-size: 24px;
+            color: #61534b;
+        }
+
+        .forum-header p {
+            margin: 0;
+            font-size: 14px;
+            color: #9c8c82;
+        }
+
+        /* 板块分区列表布局 */
+        .forum-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 每一个板块的条目卡片 */
+        .forum-category-card {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #f1eae2;
+            box-shadow: 0 4px 12px rgba(180, 160, 140, 0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none; /* 去掉超链接下划线 */
+            color: inherit;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* 鼠标悬停卡片时的温暖渐变效果 */
+        .forum-category-card:hover {
+            transform: translateY(-2px);
+            border-color: #dbcfc2;
+            box-shadow: 0 6px 16px rgba(180, 160, 140, 0.08);
+            background-color: #faf8f2;
+        }
+
+        .category-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .category-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #61534b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-desc {
+            font-size: 14px;
+            color: #8c7e74;
+            line-height: 1.5;
+        }
+
+        .arrow-icon {
+            font-size: 18px;
+            color: #c4b7ad;
+            transition: transform 0.3s;
+        }
+
+        .forum-category-card:hover .arrow-icon {
+            color: #917e72;
+            transform: translateX(3px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶端返回条 -->
+    <div class="header-bar">
+        <a class="back-btn" onclick="history.back()">ㄑ 返回主页</a >
+        <div class="page-title">钟凌骁心理咨询工作室</div>
+    </div>
+
+    <!-- 主体内容 -->
+    <div class="main-content">
+        
+        <div class="forum-header">
+            <h1>共鸣社区</h1>
+            <p>这是一个温馨、匿名的患者互助空间，请善待每一颗脆弱的心灵。</p >
+        </div>
+
+        <!-- 四个板块的分条界面 -->
+        <div class="forum-grid">
+
+            <!-- 1. 情绪树洞 -->
+            <a href=" " class="forum-category-card">
+                <div class="category-meta">
+                    <div class="category-name">🌱 情绪树洞</div>
+                    <div class="category-desc">倾听内心的波澜。在这里写下那些无法对身边人吐露的晦暗、迷茫与深夜的碎碎念。</div>
+                </div>
+                <div class="arrow-icon">➔</div>
+            </a >
+
+            <!-- 2. 求助问答 -->
+            <a href="forum_qa.html" class="forum-category-card">
+                <div class="category-meta">
+                    <div class="category-name">❓ 求助问答</div>
+                    <div class="category-desc">症状交流与经验互助。药物副作用探讨、情绪躯体化应对方案以及心理咨询准备。</div>
+                </div>
+                <div class="arrow-icon">➔</div>
+            </a >
+
+            <!-- 3. 日常灌水 -->
+            <a href="forum_chat.html" class="forum-category-card">
+                <div class="category-meta">
+                    <div class="category-name">☕ 日常灌水</div>
+                    <div class="category-desc">生活不止有病痛。分享今天吃到的美食、看到的落日、以及治愈你的一首歌。</div>
+                </div>
+                <div class="arrow-icon">➔</div>
+            </a >
+
+            <!-- 4. 违规公示 -->
+            <a href="forum_notice.html" class="forum-category-card">
+                <div class="category-meta">
+                    <div class="category-name">📢 违规公示</div>
+                    <div class="category-desc">社区环境维护。包含恶意引战、虚假医疗广告、色情暴力及违规账号的处理结果公示。</div>
+                </div>
+                <div class="arrow-icon">➔</div>
+            </a >
+
+        </div>
+
+    </div>
+
+</body>
+</html>
