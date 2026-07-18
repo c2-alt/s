@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>共鸣社区 - 钟凌骁心理咨询工作室</title>
+    <title>共鸣社区 - 互助论坛</title>
     <style>
-        /* 保持全局低饱和、柔和温暖的色调 */
+        /* 全局低饱和度、温暖且略显压抑的色调 */
         body {
-            background-color: #fcfaf2; /* 柔和米白色 */
-            color: #5a504a; /* 低饱和深褐 */
+            background-color: #fcfaf2;
+            color: #5a504a;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             line-height: 1.6;
         }
 
-        /* 顶部返回导航 */
+        /* 顶部导航条 */
         .header-bar {
-            background-color: #f4eae1; /* 柔和燕麦色 */
+            background-color: #f4eae1;
             padding: 15px 20px;
             border-bottom: 1px solid #eadecf;
             display: flex;
@@ -30,7 +30,6 @@
             text-decoration: none;
             font-size: 14px;
             cursor: pointer;
-            font-weight: 500;
         }
 
         .back-btn:hover {
@@ -43,147 +42,212 @@
             color: #61534b;
         }
 
-        /* 核心内容布局 */
-        .main-content {
+        /* 核心布局容器 */
+        .main-container {
             max-width: 800px;
-            margin: 40px auto;
+            margin: 30px auto;
             padding: 0 20px;
             box-sizing: border-box;
         }
 
-        .forum-header {
+        /* 论坛公告头条 */
+        .forum-announcement {
+            background-color: #f5ede2;
+            border-left: 4px solid #bfa391;
+            padding: 15px 20px;
+            border-radius: 4px;
             margin-bottom: 30px;
-        }
-
-        .forum-header h1 {
-            margin: 0 0 8px 0;
-            font-size: 24px;
+            font-size: 14px;
             color: #61534b;
         }
 
-        .forum-header p {
-            margin: 0;
-            font-size: 14px;
-            color: #9c8c82;
+        .forum-announcement strong {
+            color: #7c6d65;
         }
 
-        /* 板块分区列表布局 */
+        /* 分区列表标题 */
+        .section-title {
+            font-size: 20px;
+            color: #61534b;
+            margin: 0 0 20px 0;
+            font-weight: bold;
+            border-bottom: 1px solid #eadecf;
+            padding-bottom: 8px;
+        }
+
+        /* 分区卡片列表容器 */
         .forum-grid {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        /* 每一个板块的条目卡片 */
-        .forum-category-card {
+        /* 单个分区入口卡片 */
+        .forum-card {
             background-color: #ffffff;
-            padding: 25px;
-            border-radius: 12px;
             border: 1px solid #f1eae2;
-            box-shadow: 0 4px 12px rgba(180, 160, 140, 0.04);
+            border-radius: 12px;
+            padding: 22px;
+            text-decoration: none; /* 去掉超链接下划线 */
+            color: inherit;
+            display: block;
+            box-shadow: 0 4px 12px rgba(180, 160, 140, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* 悬停时有微妙的浮起感，暗示可点击 */
+        .forum-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(160, 140, 120, 0.08);
+            border-color: #eadecf;
+        }
+
+        /* 卡片头部：图标、名称与帖子计数 */
+        .card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            text-decoration: none; /* 去掉超链接下划线 */
-            color: inherit;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            margin-bottom: 10px;
         }
 
-        /* 鼠标悬停卡片时的温暖渐变效果 */
-        .forum-category-card:hover {
-            transform: translateY(-2px);
-            border-color: #dbcfc2;
-            box-shadow: 0 6px 16px rgba(180, 160, 140, 0.08);
-            background-color: #faf8f2;
-        }
-
-        .category-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .category-name {
-            font-size: 18px;
-            font-weight: bold;
-            color: #61534b;
+        .card-identity {
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .category-desc {
+        .card-icon {
+            font-size: 22px;
+        }
+
+        .card-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #61534b;
+        }
+
+        .forum-card:hover .card-name {
+            color: #bfa391; /* 悬停时标题变色 */
+        }
+
+        .post-count {
+            font-size: 12px;
+            background-color: #faf8f2;
+            color: #9c8c82;
+            padding: 3px 8px;
+            border-radius: 20px;
+            border: 1px solid #f1eae2;
+        }
+
+        /* 分区简介描述 */
+        .card-desc {
             font-size: 14px;
             color: #8c7e74;
-            line-height: 1.5;
+            margin-bottom: 15px;
         }
 
-        .arrow-icon {
-            font-size: 18px;
-            color: #c4b7ad;
-            transition: transform 0.3s;
+        /* 分区预览：模拟该版块最新的一条帖子摘要 */
+        .card-preview {
+            background-color: #faf8f2;
+            border-radius: 6px;
+            padding: 12px 15px;
+            font-size: 13px;
+            border-left: 3px solid #eedfcb;
         }
 
-        .forum-category-card:hover .arrow-icon {
-            color: #917e72;
-            transform: translateX(3px);
+        .preview-line {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #7c6d65;
+        }
+
+        .preview-author {
+            font-weight: bold;
+            color: #9c8c82;
+            margin-right: 5px;
         }
     </style>
 </head>
 <body>
 
-    <!-- 顶端返回条 -->
     <div class="header-bar">
-        <a class="back-btn" onclick="history.back()">ㄑ 返回主页</a >
-        <div class="page-title">钟凌骁心理咨询工作室</div>
+        <a class="back-btn" onclick="history.back()">ㄑ 返回上级</a >
+        <div class="page-title">共鸣社区 ➔ 分区主页</div>
     </div>
 
-    <!-- 主体内容 -->
-    <div class="main-content">
+    <div class="main-container">
         
-        <div class="forum-header">
-            <h1>共鸣社区</h1>
-            <p>这是一个温馨、匿名的患者互助空间，请善待每一颗脆弱的心灵。</p >
+        <div class="forum-announcement">
+            📢 <strong>社区重要规则：</strong> 本社区致力于为心理障碍患者提供纯净的互助环境。任何恶意引战、虚假诽谤或未经证实的内容将被随时锁帖公示。请各位病友保持理智，配合管理员维护社区秩序。
         </div>
 
-        <!-- 四个板块的分条界面 -->
+        <h2 class="section-title">💬 社区互助分区</h2>
+
         <div class="forum-grid">
 
-            <!-- 1. 情绪树洞 -->
-            <a href=" " class="forum-category-card">
-                <div class="category-meta">
-                    <div class="category-name">🌱 情绪树洞</div>
-                    <div class="category-desc">倾听内心的波澜。在这里写下那些无法对身边人吐露的晦暗、迷茫与深夜的碎碎念。</div>
+            <a href=" " class="forum-card">
+                <div class="card-header">
+                    <div class="card-identity">
+                        <span class="card-icon">🌲</span>
+                        <span class="card-name">情绪树洞</span>
+                    </div>
+                    <span class="post-count">今日 18</span>
                 </div>
-                <div class="arrow-icon">➔</div>
+                <div class="card-desc">倾听内心的声音，在这里写下你无法对旁人诉说的痛苦、迷茫与呓语。</div>
+                <div class="card-preview">
+                    <div class="preview-line">
+                        <span class="preview-author">帆布三文鱼：</span>我其实在18岁那年就已经死了……
+                    </div>
+                </div>
             </a >
 
-            <!-- 2. 求助问答 -->
-            <a href="forum_qa.html" class="forum-category-card">
-                <div class="category-meta">
-                    <div class="category-name">❓ 求助问答</div>
-                    <div class="category-desc">症状交流与经验互助。药物副作用探讨、情绪躯体化应对方案以及心理咨询准备。</div>
+            <a href="forum_qa.html" class="forum-card">
+                <div class="card-header">
+                    <div class="card-identity">
+                        <span class="card-icon">❓</span>
+                        <span class="card-name">求助问答</span>
+                    </div>
+                    <span class="post-count">今日 5</span>
                 </div>
-                <div class="arrow-icon">➔</div>
+                <div class="card-desc">用药反馈、躯体化副反应交流、诊疗咨询以及病友间的抗郁经验求助。</div>
+                <div class="card-preview">
+                    <div class="preview-line">
+                        <span class="preview-author">深海火花：</span>有没有找钟医生做过催眠治疗的？为什么第五次做完之后一闭眼总能听到嘈杂的喃喃自语……
+                    </div>
+                </div>
             </a >
 
-            <!-- 3. 日常灌水 -->
-            <a href="forum_chat.html" class="forum-category-card">
-                <div class="category-meta">
-                    <div class="category-name">☕ 日常灌水</div>
-                    <div class="category-desc">生活不止有病痛。分享今天吃到的美食、看到的落日、以及治愈你的一首歌。</div>
+            <a href="forum_chat.html" class="forum-card">
+                <div class="card-header">
+                    <div class="card-identity">
+                        <span class="card-icon">☕</span>
+                        <span class="card-name">日常灌水</span>
+                    </div>
+                    <span class="post-count">今日 42</span>
                 </div>
-                <div class="arrow-icon">➔</div>
+                <div class="card-desc">爱好分享、抱团取暖，生活除了疾病，还有那些微不足道的琐碎日常。</div>
+                <div class="card-preview">
+                    <div class="preview-line">
+                        <span class="preview-author">极光：</span>替我先生向大家作最后的告别。很抱歉，我先生已于上周四从26楼一跃而下……
+                    </div>
+                </div>
             </a >
 
-            <!-- 4. 违规公示 -->
-            <a href="forum_notice.html" class="forum-category-card">
-                <div class="category-meta">
-                    <div class="category-name">📢 违规公示</div>
-                    <div class="category-desc">社区环境维护。包含恶意引战、虚假医疗广告、色情暴力及违规账号的处理结果公示。</div>
+            <a href="forum_notice.html" class="forum-card" style="border-color: #eedfcb;">
+                <div class="card-header">
+                    <div class="card-identity">
+                        <span class="card-icon">📢</span>
+                        <span class="card-name" style="color: #8a6d5c;">违规公示</span>
+                    </div>
+                    <span class="post-count" style="background-color: #fce4e4; color: #c0392b; border-color: #f5c6c6;">已锁定</span>
                 </div>
-                <div class="arrow-icon">➔</div>
+                <div class="card-desc">发布恶意诽谤、违规散布谣言、严重违反管理条例的帖子公示以及封禁账号记录。</div>
+                <div class="card-preview" style="background-color: #fdf5f5; border-left-color: #f5c6c6;">
+                    <div class="preview-line" style="color: #c0392b; font-weight: bold;">
+                        ⚠️ 该版块已处于只读监控状态。最新公示：【恶意诽谤】关于用户“蓝鸟”不实言论的处理结果。
+                    </div>
+                </div>
             </a >
 
         </div>
