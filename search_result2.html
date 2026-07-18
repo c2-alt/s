@@ -2,18 +2,41 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>搜索结果 - 探搜</title>
+    <title>“归处” - 搜索结果</title>
     <style>
-        body { background-color: #ffffff; color: #333; margin: 0; padding: 20px; font-family: sans-serif; }
-        .result-card { border: 1px solid #e3e5e7; border-radius: 12px; padding: 20px; max-width: 600px; margin: 0 auto; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-        .title { font-size: 19px; color: #1a0dab; text-decoration: none; display: block; margin-bottom: 10px; }
-        .desc { font-size: 14px; color: #4e4e4e; }
+        body { background-color: #ffffff; color: #333; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+        
+        /* 顶部搜索条 */
+        .header { border-bottom: 1px solid #ebebeb; padding: 15px 20px; display: flex; align-items: center; gap: 20px; }
+        .logo { font-size: 24px; font-weight: bold; color: #4e6ef2; }
+        .search-bar { width: 100%; max-width: 500px; padding: 10px; border: 2px solid #4e6ef2; border-radius: 8px; font-size: 16px; outline: none; }
+
+        /* 结果区域 */
+        .content { max-width: 650px; margin: 20px 20px 20px 150px; }
+        .result-item { margin-bottom: 30px; }
+        .title { font-size: 20px; color: #1a0dab; text-decoration: none; display: block; margin-bottom: 5px; }
+        .title:hover { text-decoration: underline; }
+        .site { font-size: 14px; color: #006621; margin-bottom: 5px; }
+        .desc { font-size: 14px; color: #545454; line-height: 1.5; }
     </style>
 </head>
 <body>
-    <div class="result-card">
-        <a href=" " class="title">【求助！血泪控诉！】家人接触到了邪教组织！ - 反邪教吧 - 白度贴吧</a >
-        <div class="desc">各位吧友，发这个贴我是真的走投无路了。我妹妹原本只是单纯的抑郁症。今年初，她不知道通过什么渠道知道了一个叫归处的组织...</div>
+    <div class="header">
+        <div class="logo">探搜</div>
+        <input class="search-bar" value="归处" readonly>
+    </div>
+    
+    <div class="content">
+        <div class="result-item">
+            <a href=" " class="title">【求助！血泪控诉！】家人接触到了邪教组织！ - 反邪教吧 - 白度贴吧</a >
+            <div class="site">tieba.baidu.com › p › 7784321</div>
+            <div class="desc">各位吧友，发这个贴我是真的走投无路了。我妹妹原本只是单纯的抑郁症。今年初，她不知道通过什么渠道知道了一个叫归处的组织……</div>
+        </div>
+        <div class="result-item">
+            <div class="title" style="color: #666; cursor: default;">归处是什么_百度百科</div>
+            <div class="site">baike.baidu.com</div>
+            <div class="desc">由于相关内容违反社区管理规定，该词条已暂停更新及访问。</div>
+        </div>
     </div>
 </body>
 </html>
