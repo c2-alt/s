@@ -262,16 +262,52 @@
         // 浏览器前往地址的逻辑
         function searchUrl() {
             var inputVal = document.getElementById('url-input').value.trim();
-            // 只要输入或包含了 doctor.html，就执行跳转
+            
+            // 如果空输入，什么都不做
+            if (inputVal === "") {
+                return;
+            }
+
+            // 1. 保留原本包含 doctor.html 的直接跳转逻辑
             if (inputVal.toLowerCase().includes('doctor.html')) {
                 location.href = 'doctor.html';
-            } else if (inputVal === "") {
-                // 如果空输入，什么都不做
-            } else {
-                alert("无法访问该地址，请检查网址是否正确。");
+                return;
+            }
+
+            // 2. 新增核心关键词解谜匹配逻辑
+            switch (inputVal) {
+                case "一块油渍":
+                    location.href = "search_result1.html";
+                    break;
+                case "归处":
+                    location.href = "search_result2.html";
+                    break;
+                case "钟凌骁":
+                    location.href = "search_result3.html";
+                    break;
+                case "樊星":
+                    location.href = "search_result4.html";
+                    break;
+                case "Starlight_Xing":
+                case "starlight_xing":
+                    location.href = "search_result5.html";
+                    break;
+                case "抱着星星的花":
+                    location.href = "search_result6.html";
+                    break;
+                default:
+                    // 不匹配任何已知线索时的弹窗提示
+                    alert("无法访问该地址，请检查网址是否正确。");
+                    break;
             }
         }
+
+        // 交互优化：让玩家在输入框内敲回车也能直接触发“前往”按钮
+        document.getElementById('url-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchUrl();
+            }
+        });
     </script>
 </body>
 </html>
-
