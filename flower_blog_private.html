@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>抱着星星的花 的私密空间</title>
+    <style>
+        body { 
+            background-color: #f4f6f9; 
+            color: #333333; 
+            margin: 0; 
+            padding: 0; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.8;
+        }
+        /* 顶部导航 */
+        .nav-bar { 
+            background-color: #ffffff; 
+            padding: 15px 20px; 
+            border-bottom: 1px solid #e1e4e8; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .back-link { 
+            color: #eb7350; 
+            text-decoration: none; 
+            font-size: 15px; 
+            cursor: pointer;
+        }
+        .back-link:hover { text-decoration: underline; }
+        
+        /* 个人资料卡片 */
+        .profile-card { 
+            max-width: 700px; 
+            margin: 25px auto; 
+            background-color: #ffffff; 
+            border: 1px solid #e1e4e8; 
+            border-radius: 8px; 
+            padding: 30px; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .profile-header { display: flex; align-items: center; gap: 20px; }
+        .avatar-box { 
+            width: 75px; 
+            height: 75px; 
+            background-color: #eef2f7; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 35px; 
+            border: 1px solid #d1d5da;
+        }
+        .profile-info { display: flex; flex-direction: column; gap: 5px; }
+        .nickname { font-size: 22px; font-weight: bold; color: #111; }
+        .stats { font-size: 14px; color: #586069; display: flex; gap: 20px; }
+        .stats strong { color: #24292e; }
+        .private-tag {
+            display: inline-block;
+            background-color: #ffe3e3;
+            color: #f03e3e;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        /* 博客列表 */
+        .blog-container { 
+            max-width: 700px; 
+            margin: 0 auto 50px auto; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+        }
+        .blog-card { 
+            background-color: #ffffff; 
+            border: 1px solid #e1e4e8; 
+            border-radius: 8px; 
+            padding: 30px; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .blog-date { 
+            font-size: 13px; 
+            color: #eb7350; 
+            margin-bottom: 12px; 
+            font-weight: 500;
+        }
+        .blog-content { 
+            font-size: 17px; 
+            color: #24292e; 
+            text-align: justify; 
+            white-space: pre-wrap; 
+        }
+        .mention { 
+            color: #0366d6; 
+            text-decoration: none; 
+            font-weight: 500; 
+        }
+        .mention:hover { text-decoration: underline; }
+        .link-text {
+            color: #eb7350;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部状态条 -->
+    <div class="nav-bar">
+        <a class="back-link" href=" ">ㄑ 退出登录</a >
+        <div style="font-size: 16px; font-weight: bold; color: #24292e;">私密空间内部页</div>
+    </div>
+
+    <!-- 用户名片区 -->
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="avatar-box">🌸</div>
+            <div class="profile-info">
+                <div class="nickname">抱着星星的花 <span class="private-tag">🔒 仅号主可见</span></div>
+                <div class="stats">
+                    <span>关注 <strong>1</strong></span>
+                    <span>粉丝 <strong>***</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 博客正文时间线 -->
+    <div class="blog-container">
+
+        <!-- 2026-03-12 -->
+        <div class="blog-card">
+            <div class="blog-date">2026-03-12</div>
+            <div class="blog-content">阿星，我想你，你也一样，对吧？别急，很快，很快了。</div>
+        </div>
+
+        <!-- 2025-09-05 -->
+        <div class="blog-card">
+            <div class="blog-date">2025-09-05</div>
+            <div class="blog-content">十年生死两茫茫，不思量，自难忘。</div>
+        </div>
+
+        <!-- 2024-10-23 -->
+        <div class="blog-card">
+            <div class="blog-date">2024-10-23</div>
+            <div class="blog-content">阿星，两个小崽儿被我接回国了，给我们的家人抚养，小槐长得很像你。</div>
+        </div>
+
+        <!-- 2024-03-12 -->
+        <div class="blog-card">
+            <div class="blog-date">2024-03-12</div>
+            <div class="blog-content">我的星星，如果你还在，也已经34岁了，可命运把你永远留在了25岁……不，你的生命没有停滞，你在那里生活得很开心，我会送更多人去找你，让你不孤独。</div>
+        </div>
+
+        <!-- 2023-05-23 -->
+        <div class="blog-card">
+            <div class="blog-date">2023-05-23</div>
+            <div class="blog-content">阿星，为什么他们都能通过催眠见到你，我却怎么都见不到你呢？你是不是怪我没有保护好你，所以不愿意见我了？</div>
+        </div>
+
+        <!-- 2022-08-13 -->
+        <div class="blog-card">
+            <div class="blog-date">2022-08-13</div>
+            <div class="blog-content">工作室完工，一切可以开始了。</div>
+        </div>
+
+        <!-- 2021-08-17 -->
+        <div class="blog-card">
+            <div class="blog-date">2021-08-17</div>
+            <div class="blog-content">他们说阿星总传讯下来，说自己想盖房子，想交朋友。只有把那些灵魂献祭上去，才能为房子添砖加瓦，阿星也能交到朋友了。</div>
+        </div>
+
+        <!-- 2021-07-11 -->
+        <div class="blog-card">
+            <div class="blog-date">2021-07-11</div>
+            <div class="blog-content">他们说我可以做引路人，每送一个灵魂上去，我和阿星重逢的时候就会更幸福。可这种事是违背职业操守的，更是违法的！</div>
+        </div>
+
+        <!-- 2021-06-09 -->
+        <div class="blog-card">
+            <div class="blog-date">2021-06-09</div>
+            <div class="blog-content">他们说阿星没有消失，只是得到赐福，离开痛苦的日子，去极乐天国了。不，这都是假的，这些东西是不存在的。</div>
+        </div>
+
+        <!-- 2021-05-06 -->
+        <div class="blog-card">
+             <div class="blog-date">2021-05-06</div>
+             <div class="blog-content">我终于找到归处了，就是那个东西带走了我的阿星，我绝对不会放过他们！<a href="guichu_darkweb.html" class="link-text" style="color: #eb7350; text-decoration: underline; font-weight: bold;">【归处入口.html】</a ></div>
+</div>
+<span class="link-text">【归处链接】</span></div>
+        </div>
+
+        <!-- 2020-06-01 -->
+        <div class="blog-card">
+            <div class="blog-date">2020-06-01</div>
+            <div class="blog-content">她们出生了。两个女孩。
+一个叫樊静槐，一个叫钟楷羽。
+可惜当年我们还没来得及讨论孩子的名字，所以我就自作主张了，还不算难听吧？</div>
+        </div>
+
+        <!-- 2019-02-15 -->
+        <div class="blog-card">
+            <div class="blog-date">2019-02-15</div>
+            <div class="blog-content">去选孕母了。</div>
+        </div>
+
+        <!-- 2018-11-14 -->
+        <div class="blog-card">
+            <div class="blog-date">2018-11-14</div>
+            <div class="blog-content">我好庆幸当年我们聊过关于孩子的话题，你说趁年轻先冻卵，就当给未来买个保险。现在，这份保险启动了。</div>
+        </div>
+
+        <!-- 2016-03-12 -->
+        <div class="blog-card">
+            <div class="blog-date">2016-03-12</div>
+            <div class="blog-content">阿星，你把我也带走吧。</div>
+        </div>
+
+        <!-- 2015-09-22 -->
+        <div class="blog-card">
+            <div class="blog-date">2015-09-22</div>
+            <div class="blog-content">我好像看见她了，是幻觉吗？我居然也开始出现幻觉了。</div>
+        </div>
+
+        <!-- 2015-09-05 -->
+        <div class="blog-card">
+            <div class="blog-date">2015-09-05</div>
+            <div class="blog-content">为什么。</div>
+        </div>
+
+        <!-- 2014-02-24 -->
+        <div class="blog-card">
+            <div class="blog-date">2014-02-24</div>
+            <div class="blog-content">offer到手，某人说好要请客 <a class="mention" href="#">@Starlight_Xing</a ></div>
+        </div>
+
+        <!-- 2012-10-14 -->
+        <div class="blog-card">
+            <div class="blog-date">2012-10-14</div>
+            <div class="blog-content">今天跟着导师去精神卫生中心做临床观测。那些患者坐在走廊里，眼神特别空。不得不承认，任何治疗都是有边界的，总有科学到不了的死角。</div>
+        </div>
+
+        <!-- 2011-04-12 -->
+        <div class="blog-card">
+            <div class="blog-date">2011-04-12</div>
+            <div class="blog-content">被迫去参加了我爸办的水墨展。看着那些艺术评论家穿得西装革履，围着几幅墨团赞不绝口，我只能尴尬的放空自己。</div>
+        </div>
+
+        <!-- 2009-02-11 -->
+        <div class="blog-card">
+            <div class="blog-date">2009-02-11</div>
+            <div class="blog-content">放假回来陪读，加油！<a class="mention" href="#">@Starlight_Xing</a ></div>
+        </div>
+
+        <!-- 2008-06-29 -->
+        <div class="blog-card">
+            <div class="blog-date">2008-06-29</div>
+            <div class="blog-content">阿星总是说想死，可我不想让她死，反正要学医，我不如去报心理学。</div>
+        </div>
+
+        <!-- 2008-06-25 -->
+        <div class="blog-card">
+            <div class="blog-date">2008-06-25</div>
+            <div class="blog-content">阿星终于愿意见我了，看着她颓丧的样子，我才知道什么叫心如刀绞。</div>
+        </div>
+
+        <!-- 2007-08-01 -->
+        <div class="blog-card">
+            <div class="blog-date">2007-08-01</div>
+            <div class="blog-content">嗯……亲吻爱人真是一种神奇的感觉……</div>
+        </div>
+
+        <!-- 2006-12-25 -->
+        <div class="blog-card">
+            <div class="blog-date">2006-12-25</div>
+            <div class="blog-content">给阿星准备了好久的圣诞礼物，她果然很喜欢，趁机表白了。</div>
+        </div>
+
+    </div>
+
+</body>
+</html>
