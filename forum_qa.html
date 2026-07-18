@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>求助问答 - 共鸣社区</title>
+    <style>
+        /* 全局低饱和暖色调 */
+        body {
+            background-color: #fcfaf2;
+            color: #5a504a;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+        }
+
+        /* 顶部返回导航 */
+        .header-bar {
+            background-color: #f4eae1;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eadecf;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back-btn {
+            color: #7c6d65;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            color: #bfa391;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #61534b;
+        }
+
+        /* 核心内容区 */
+        .main-content {
+            max-width: 750px;
+            margin: 30px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: #61534b;
+            margin: 0;
+            border-bottom: 2px solid #eadecf;
+            padding-bottom: 10px;
+        }
+
+        /* 帖子主卡片 */
+        .post-card {
+            background-color: #ffffff;
+            border: 1px solid #f1eae2;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(180, 160, 140, 0.04);
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #9c8c82;
+            margin-bottom: 15px;
+        }
+
+        .post-author {
+            font-weight: bold;
+            color: #7c6d65;
+        }
+
+        .post-title {
+            font-size: 18px;
+            color: #61534b;
+            margin: 0 0 15px 0;
+            font-weight: bold;
+        }
+
+        .post-text {
+            font-size: 15px;
+            color: #5a504a;
+            white-space: pre-wrap;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        /* 互动数据栏 */
+        .post-actions {
+            display: flex;
+            gap: 20px;
+            border-top: 1px solid #faf8f2;
+            padding-top: 15px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: #8c7e74;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0;
+            outline: none;
+        }
+
+        .action-btn:hover {
+            color: #bfa391;
+        }
+
+        .action-btn.liked {
+            color: #d2918c;
+            font-weight: bold;
+        }
+
+        /* 评论区默认隐藏，并带有展开动画效果 */
+        .comment-section {
+            background-color: #faf8f2;
+            border-radius: 8px;
+            padding: 0 20px;
+            border: 1px solid transparent;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+            margin-top: 0;
+        }
+
+        /* 当动态加上 .open 类名时，展现评论区 */
+        .comment-section.open {
+            padding: 15px 20px;
+            max-height: 2000px;
+            border-color: #f5ede2;
+            margin-top: 15px;
+        }
+
+        .comment-section-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #8c7e74;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #f1eae2;
+            padding-bottom: 5px;
+        }
+
+        .comment-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed #eedfcb;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .comment-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .comment-user {
+            font-size: 13px;
+            font-weight: bold;
+            color: #7c6d65;
+        }
+
+        .comment-text {
+            font-size: 14px;
+            color: #5a504a;
+            white-space: pre-wrap;
+        }
+
+        .comment-footer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶端导航 -->
+    <div class="header-bar">
+        <a class="back-btn" onclick="history.back()">ㄑ 返回社区分区</a >
+        <div class="page-title">共鸣社区 ➔ 求助问答</div>
+    </div>
+
+    <!-- 主体帖子列表 -->
+    <div class="main-content">
+        
+        <h1 class="section-title">❓ 求助问答</h1>
+
+        <!-- 帖子 1：四根banana -->
+        <div class="post-card">
+            <div class="post-header">
+                <span class="post-author">发布者：四根banana</span>
+                <span></span>
+            </div>
+            <h2 class="post-title">求助，双相1型，最近突然疯狂消费，是不是转躁了？</h2>
+            <div class="post-text">上周还躺在床上动弹不得想自杀，这几天不知道怎么了，精力异常充沛，每天只睡3个小时也不困。
+前天晚上莫名其妙在网上买了一套根本用不上的高档音响，昨天又办了三张健身卡。
+我现在整个人停不下来，脑子里想法飞快，看谁都想说话，我是不是转躁狂了？
+好害怕过几天又断崖式跌回抑郁期，有人经历过这个阶段吗？怎么控制购物欲？</div>
+            
+            <div class="post-actions">
+                <button class="action-btn" onclick="toggleLike(this, 142)">❤️ <span class="count">142</span></button>
+                <button class="action-btn" onclick="toggleComments('qa-comments-1')">💬 查看评论 (21)</button>
+            </div>
+
+            <div id="qa-comments-1" class="comment-section">
+                <div class="comment-section-title">热门评论</div>
+                <div class="comment-item">
+                    <div class="comment-user">阿乔</div>
+                    <div class="comment-text">挺符合双相的急性躁狂发作特征，思维奔逸和冲动消费是典型症状。千万不要在这个时候做任何重大决定，把银行卡交给信任的家人保管。赶紧联系你的主治医生调整情绪稳定剂的剂量，熬过这一阵就好了，加油。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 48)">❤️ <span class="count">48</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">小猫咪信徒</div>
+                    <div class="comment-text">我转躁的时候觉得自己是神，跌下来的时候觉得自己是垃圾。一定要立刻复诊，这时候光靠意志力是控制不住的。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 32)">❤️ <span class="count">32</span></button></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子 2：三十九度二 -->
+        <div class="post-card">
+            <div class="post-header">
+                <span class="post-author">发布者：三十九度二</span>
+                <span></span>
+            </div>
+            <h2 class="post-title">刚开始吃文拉法辛，恶心头晕得厉害，可以自己停药吗？</h2>
+            <div class="post-text">被确诊中度抑郁，医生开了文拉法辛（怡诺思）75mg。
+今天第一天吃，吃完两个小时开始疯狂干呕，头晕得像在坐过商车，心跳快到110。
+真的太难受了，我觉得不吃药都没这么痛苦。
+请问大家刚开始吃都这样吗？我可不可以先停药，等周末不上班了再吃？</div>
+            
+            <div class="post-actions">
+                <button class="action-btn" onclick="toggleLike(this, 96)">❤️ <span class="count">96</span></button>
+                <button class="action-btn" onclick="toggleComments('qa-comments-2')">💬 查看评论 (25)</button>
+            </div>
+
+            <div id="qa-comments-2" class="comment-section">
+                <div class="comment-section-title">热门评论</div>
+                <div class="comment-item">
+                    <div class="comment-user">撕烂你的嘴</div>
+                    <div class="comment-text">千万不要自己乱停药！ 抗抑郁药前两周的躯体副反应很大是正常的，尤其是胃肠道反应。建议你改成饭后马上吃，或者咨询医生看能不能先半颗半颗吃。熬过前两周，等血药浓度稳定了就会好很多。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 38)">❤️ <span class="count">38</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">泥小鱼</div>
+                    <div class="comment-text">文拉法辛的戒断反应非常恐怖，如果现在贸然停药你会更难受。实在挺不住就给医生发个消息，看看能不能开点缓解胃肠道副反应的辅助药。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 25)">❤️ <span class="count">25</span></button></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子 3：深海火花 -->
+        <div class="post-card">
+            <div class="post-header">
+                <span class="post-author">发布者：深海火花</span>
+                <span></span>
+            </div>
+            <h2 class="post-title">有没有找钟医生做过催眠治疗的？为什么我做完反而更不舒服了？</h2>
+            <div class="post-text">我是最近失眠严重找钟医生做线上催眠的。前几次体验很好，我确实能睡着了。
+但是做完第五次催眠治疗之后，这两天我一闭眼就会听到一些很嘈杂的喃喃自语，白天精神恍惚，总觉得这个世界很不真实，有强烈的解离感，还隐隐约约听到有个声音叫我过去。
+我去问钟医生，钟医生说这是潜意识在重塑边界时的排毒反应，让我坚持听她给的特制催眠音频巩固。
+我想问问其他治愈的病友，你们也有过这个阶段吗？</div>
+            
+            <div class="post-actions">
+                <button class="action-btn" onclick="toggleLike(this, 412)">❤️ <span class="count">412</span></button>
+                <button class="action-btn" onclick="toggleComments('qa-comments-3')">💬 查看评论 (43)</button>
+            </div>
+
+            <div id="qa-comments-3" class="comment-section">
+                <div class="comment-section-title">热门评论</div>
+                <div class="comment-item">
+                    <div class="comment-user">大懒妞</div>
+                    <div class="comment-text">楼主放心，钟医生的专业度毋庸置疑，你要完全信任她，把防御彻底卸下来。多听那个音频，你就能得到真正的平静了。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 94)">❤️ <span class="count">94</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">忧郁的门牙</div>
+                    <div class="comment-text">我在催眠中期也经历过一段严重的解离，看周围的人都像纸片人。但只要坚持跟着钟医生的引导深入下去，穿过那片迷雾，你就能找到真正的解脱。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 86)">❤️ <span class="count">86</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">MM7</div>
+                    <div class="comment-text">Although钟医生很专业，但如果楼主觉得身体实在不舒服，还是跟医生强调一下你的躯体症状吧。解离感太严重的话，可能需要配合一些抗精神病性症状的药物。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 42)">❤️ <span class="count">42</span></button></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子 4：我有聚宝盆 -->
+        <div class="post-card">
+            <div class="post-header">
+                <span class="post-author">发布者：我有聚宝盆</span>
+                <span></span>
+            </div>
+            <h2 class="post-title">第一次做心理咨询，不知道该和咨询师聊什么，好紧张</h2>
+            <div class="post-text">约了这周五和钟医生线下咨询，第一次做咨询，有点慌。我不知道进门之后第一句话该说什么，要从我的童年开始讲起吗？如果我坐在那里哭，什么都说不出来，医生会觉得我是在浪费时间吗？</div>
+            
+            <div class="post-actions">
+                <button class="action-btn" onclick="toggleLike(this, 78)">❤️ <span class="count">78</span></button>
+                <button class="action-btn" onclick="toggleComments('qa-comments-4')">💬 查看评论 (12)</button>
+            </div>
+
+            <div id="qa-comments-4" class="comment-section">
+                <div class="comment-section-title">热门评论</div>
+                <div class="comment-item">
+                    <div class="comment-user">金渐层</div>
+                    <div class="comment-text">楼主放轻松，钟医生很专业的，别有心理压力。btw，钟医生诊疗室里放的糖是真的好吃，我去网上搜要好贵一颗呢，楼主到时候记得吃两颗尝尝鲜。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 54)">❤️ <span class="count">54</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">瞳孔的晴天</div>
+                    <div class="comment-text">我第一次找钟医生咨询的时候也哭了很久，钟医生很耐心很温柔的安慰了我，我现在是巩固期，还是每周都去找她聊天。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 39)">❤️ <span class="count">39</span></button></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // 控制评论区展开与收起
+        function toggleComments(commentId) {
+            var el = document.getElementById(commentId);
+            el.classList.toggle('open');
+        }
+
+        // 点赞交互
+        function toggleLike(btn, baseCount) {
+            var countSpan = btn.querySelector('.count');
+            if (btn.classList.contains('liked')) {
+                btn.classList.remove('liked');
+                countSpan.textContent = baseCount;
+            } else {
+                btn.classList.add('liked');
+                countSpan.textContent = baseCount + 1;
+            }
+        }
+    </script>
+</body>
+</html>
