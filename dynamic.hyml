@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医师动态 - 钟凌骁心理咨询工作室</title>
+    <style>
+        /* 保持与主页高度一致的柔和温暖色调 */
+        body {
+            background-color: #fcfaf2; /* 柔和米白色 */
+            color: #5a504a; /* 低饱和深褐 */
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif;
+            line-height: 1.6;
+        }
+
+        /* 顶部返回导航 */
+        .header-bar {
+            background-color: #f4eae1; /* 柔和燕麦色 */
+            padding: 15px 20px;
+            border-bottom: 1px solid #eadecf;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back-btn {
+            color: #7c6d65;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            color: #bfa391;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #61534b;
+        }
+
+        /* 核心内容区 */
+        .main-content {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .section-header h1 {
+            margin: 0 0 5px 0;
+            font-size: 24px;
+            color: #61534b;
+        }
+
+        .section-header p {
+            margin: 0;
+            font-size: 14px;
+            color: #9c8c82;
+            font-style: italic;
+        }
+
+        /* 动态卡片样式 */
+        .feed-card {
+            background-color: #ffffff;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(180, 160, 140, 0.05);
+            border: 1px solid #f1eae2;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .feed-date {
+            font-size: 13px;
+            color: #9c8c82;
+            font-weight: 500;
+        }
+
+        .feed-text {
+            font-size: 15px;
+            color: #5a504a;
+            line-height: 1.7;
+            white-space: pre-wrap; /* 允许文本内部正常换行 */
+        }
+
+        /* 点赞区 */
+        .feed-footer {
+            margin-top: 5px;
+            border-top: 1px dashed #f5ede4;
+            padding-top: 12px;
+            display: flex;
+        }
+
+        .like-btn {
+            background: none;
+            border: none;
+            color: #8c7e74;
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0;
+            transition: color 0.2s;
+        }
+
+        .like-btn:hover {
+            color: #bfa391;
+        }
+
+        .like-btn.liked {
+            color: #d2918c; /* 点赞后变成柔和的暖红色 */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶端返回条 -->
+    <div class="header-bar">
+        <a class="back-btn" onclick="history.back()">ㄑ 返回主页</a >
+        <div class="page-title">钟凌骁心理咨询工作室</div>
+    </div>
+
+    <!-- 动态列表 -->
+    <div class="main-content">
+        
+        <div class="section-header">
+            <h1>医师动态</h1>
+            <p>随笔或临床札记。</p >
+        </div>
+
+        <!-- 2026-09-03 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-09-03</div>
+            <div class="feed-text">有些痛苦，不是时间可以带走的。✨</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 1245)">❤️ <span class="count">1245</span></button></div>
+        </div>
+
+        <!-- 2026-08-31 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-08-31</div>
+            <div class="feed-text">有时候，不原谅也是放过自己。允许自己有恨，允许关系有裂痕，才是真实的愈合。</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 2380)">❤️ <span class="count">2380</span></button></div>
+        </div>
+
+        <!-- 2026-08-26 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-08-26</div>
+            <div class="feed-text">欧文·亚隆：“一段有效的治疗，往往在治愈来访者的同时，也治愈了治疗师。”，感谢这份职业带给我的生命厚度。</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 3102)">❤️ <span class="count">3102</span></button></div>
+        </div>
+
+        <!-- 2026-08-21 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-08-21</div>
+            <div class="feed-text">游子问：“家在哪？”
+引路人指了指游子的胸膛。</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 846)">❤️ <span class="count">846</span></button></div>
+        </div>
+
+        <!-- 2026-08-15 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-08-15</div>
+            <div class="feed-text">经常有家长问：“孩子不愿意和我沟通怎么办？” 我想先问家长：“你是想听到TA在想什么，还是想纠正TA在想什么？”</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 1754)">❤️ <span class="count">1754</span></button></div>
+        </div>
+
+        <!-- 2026-08-09 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-08-09</div>
+            <div class="feed-text">重读《心理治疗中的依恋》，每次都有新体悟。分享其中一句：“我们看到他人身上的情绪，就会在自己内在感受到这些情绪。”</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 932)">❤️ <span class="count">932</span></button></div>
+        </div>
+
+        <!-- 2026-07-22 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-07-22</div>
+            <div class="feed-text">打磨半年的《焦虑自救手册》音频课终于上线。首周订阅赠一次15分钟答疑。</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 1105)">❤️ <span class="count">1105</span></button></div>
+        </div>
+
+        <!-- 2026-07-17 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-07-17</div>
+            <div class="feed-text">今天参加完关于复杂性创伤的培训，最大的感触是：慢一点，再慢一点。信任的建立，比任何技术都重要。</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 1420)">❤️ <span class="count">1420</span></button></div>
+        </div>
+
+        <!-- 2026-07-09 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-07-09</div>
+            <div class="feed-text">我哄好别人失眠的功力有多深，哄自己睡觉的难度就有多大。</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 2891)">❤️ <span class="count">2891</span></button></div>
+        </div>
+
+        <!-- 2026-07-04 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-07-04</div>
+            <div class="feed-text">请像对待你最好的朋友那样对待自己。当朋友犯错时，你会说“没关系，我们都有失误”；当朋友疲惫时，你会说“去休息吧”。现在，把这句话说给自己听。</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 3422)">❤️ <span class="count">3422</span></button></div>
+        </div>
+
+        <!-- 2026-06-19 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-06-19</div>
+            <div class="feed-text">引路人不问归处，只指星辰。</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 731)">❤️ <span class="count">731</span></button></div>
+        </div>
+
+        <!-- 2026-06-06 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-06-06</div>
+            <div class="feed-text">连续四个小时的咨询，现在只想做一颗安静的土豆，不想说话，不想思考。</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 1985)">❤️ <span class="count">1985</span></button></div>
+        </div>
+
+        <!-- 2026-05-29 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-05-29</div>
+            <div class="feed-text">很多来访者期望咨询师帮他们“消灭负面情绪”。我的回答通常是这样：“如果你的目标是永远快乐，那我们可能需要先谈谈这个目标本身的可行性；如果你的目标是能和愤怒/悲伤/恐惧和平共处，那我们现在就可以开始。”</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 2140)">❤️ <span class="count">2140</span></button></div>
+        </div>
+
+        <!-- 2026-05-14 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-05-14</div>
+            <div class="feed-text">风停的地方，就是游子的归处。</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 654)">❤️ <span class="count">654</span></button></div>
+        </div>
+
+        <!-- 2026-04-08 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-04-08</div>
+            <div class="feed-text">有些来访者我确实爱莫能助。与其说是能力问题，不是说是匹配问题。就像有些钥匙开不了某些锁，不代表钥匙或锁本身有问题。转介不是失败，是对来访者最大的负责。</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 1532)">❤️ <span class="count">1532</span></button></div>
+        </div>
+
+        <!-- 2026-04-01 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-04-01</div>
+            <div class="feed-text">本周五下午临时空出一个时段，如有需要可预约咨询。</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 412)">❤️ <span class="count">412</span></button></div>
+        </div>
+
+        <!-- 2026-03-12 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-03-12</div>
+            <div class="feed-text">曾经沧海难为水，除却巫山不是云。⭐️</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 2760)">❤️ <span class="count">2760</span></button></div>
+        </div>
+
+        <!-- 2026-03-03 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-03-03</div>
+            <div class="feed-text">元宵节，记得吃汤圆。💫</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 1340)">❤️ <span class="count">1340</span></button></div>
+        </div>
+
+        <!-- 2026-02-03 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-02-03</div>
+            <div class="feed-text">愤怒是在告诉你边界被侵犯，焦虑是在提醒你事情很重要，抑郁是在强制你停下来休息。情绪不是我们的敌人。</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 3890)">❤️ <span class="count">3890</span></button></div>
+        </div>
+
+        <!-- 2026-01-18 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-01-18</div>
+            <div class="feed-text">很多人以为咨询室里最怕的是沉默。其实，沉默往往是对话最深刻的时刻。</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 1642)">❤️ <span class="count">1642</span></button></div>
+        </div>
+
+        <!-- 2026-01-14 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-01-14</div>
+            <div class="feed-text">过去无法改变，但我们可以改变它在我们心中的重量。</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 2210)">❤️ <span class="count">2210</span></button></div>
+        </div>
+
+        <!-- 2026-01-01 -->
+        <div class="feed-card">
+            <div class="feed-date">2026-01-01</div>
+            <div class="feed-text">新年快乐。🌟</div>
+            <div class="feed-footer"><button class="like-btn" onclick="toggleLike(this, 4520)">❤️ <span class="count">4520</span></button></div>
+        </div>
+
+    </div>
+
+    <script>
+        // 点赞交互：点击数字加1，再次点击恢复
+        function toggleLike(btn, baseCount) {
+            var countSpan = btn.querySelector('.count');
+            if (btn.classList.contains('liked')) {
+                btn.classList.remove('liked');
+                countSpan.textContent = baseCount;
+            } else {
+                btn.classList.add('liked');
+                countSpan.textContent = baseCount + 1;
+            }
+        }
+    </script>
+</body>
+</html>
