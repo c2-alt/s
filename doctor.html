@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>钟凌骁医学博士心理咨询工作室</title>
+    <style>
+        /* 全局低饱和、柔和温暖暖色调控制 */
+        body {
+            background-color: #fcfaf2; /* 柔和米白色背景 */
+            color: #5a504a; /* 低饱和深褐 */
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif;
+            line-height: 1.6;
+        }
+
+        /* 导航菜单栏 */
+        .navbar {
+            background-color: #f4eae1; /* 柔和燕麦色 */
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eadecf;
+        }
+
+        .brand-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #7c6d65;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #7c6d65;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #bfa391;
+        }
+
+        /* 主体布局 */
+        .main-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 40px;
+            box-sizing: border-box;
+        }
+
+        /* 左侧：医生主页 */
+        .intro-section {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .doctor-header h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+            color: #61534b;
+            font-weight: 600;
+        }
+
+        .tagline {
+            font-size: 15px;
+            color: #9c8c82;
+            font-style: italic;
+            margin: 0;
+            border-left: 3px solid #d4c3b3;
+            padding-left: 10px;
+        }
+
+        /* 卡片通用样式 */
+        .info-card {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(180, 160, 140, 0.08);
+            border: 1px solid #f1eae2;
+        }
+
+        .info-card h2 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #61534b;
+            border-bottom: 1px solid #f1eae2;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .info-card p, .info-card li {
+            font-size: 14.5px;
+            color: #6e6158;
+            margin-bottom: 10px;
+        }
+
+        .info-card ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        /* 右侧：独立登录板块 */
+        .login-sidebar {
+            flex: 1;
+            min-width: 280px;
+            align-self: flex-start;
+            position: sticky;
+            top: 20px;
+        }
+
+        .login-card {
+            background-color: #f7f1e9;
+            padding: 30px 25px;
+            border-radius: 12px;
+            border: 1px solid #eadecf;
+            box-shadow: 0 4px 16px rgba(180, 160, 140, 0.05);
+        }
+
+        .login-card h3 {
+            margin-top: 0;
+            font-size: 16px;
+            color: #61534b;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            color: #7c6d65;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dbcfc2;
+            border-radius: 6px;
+            background-color: #ffffff;
+            color: #5a504a;
+            box-sizing: border-box;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            border-color: #bfa391;
+        }
+
+        .login-btn {
+            width: 100%;
+            background-color: #a69286;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            background-color: #917e72;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .login-sidebar {
+                width: 100%;
+                position: static;
+                order: -1;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶端导航菜单栏 -->
+    <nav class="navbar">
+        <div class="brand-title">钟凌骁心理咨询工作室</div>
+        <div class="nav-links">
+            <a onclick="alert('正在加载医师动态...')">医师动态</a >
+            <a onclick="alert('进入破茧成蝶板块...')">破茧成蝶</a >
+            <a onclick="alert('进入共鸣社区...')">共鸣</a >
+        </div>
+    </nav>
+
+    <!-- 网页核心内容区 -->
+    <div class="main-container">
+        
+        <!-- 左侧：完全正常、正规的诊所主页内容 -->
+        <main class="intro-section">
+            
+            <div class="doctor-header">
+                <h1>钟凌骁</h1>
+                <p class="tagline">“倾听心灵的细微波澜，陪你在喧嚣中找到安宁的栖息之所。”</p >
+            </div>
+
+            <div class="info-card">
+                <h2>治疗理念</h2>
+                <p>在快节奏的现代社会中，情绪的低落、焦虑或迷茫，往往是心灵发出的求救信号。许多人习惯将痛苦归咎于自我的不坚强，从而陷入内耗。在我的咨询室里，我们不谈对错，不加评判。我将运用专业的临床心理学方法，协助你解开被潜意识掩埋的结，重塑内在的精神防御机制，回归轻松、平稳的生活常态。</p >
+            </div>
+
+            <div class="info-card">
+                <h2>专业背景</h2>
+                <p><strong>学术履历：</strong></p >
+                <ul>
+                    <li>北京大学心理与认知科学学院硕士研究生</li>
+                    <li>美国宾夕法尼亚大学临床心理学博士</li>
+                    <li>宾夕法尼亚大学精神卫生中心特聘临床观测顾问</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>资历说明：</strong>具备十余年一线临床心理干预经验，专攻认知行为疗法（CBT）、情绪障碍调节及危机干预。回国后创办本工作室，致力于深度催眠阻断疗法的临床实践与应用，已帮助数千名面临情绪困境的个体重建心理健康。</p >
+            </div>
+
+            <div class="info-card">
+                <h2>擅长领域</h2>
+                <p>重度抑郁状态缓解、双相情感障碍（I型/II型）长程情绪管理、边缘型人格（BPD）心理重建、社交恐惧与重度焦虑干预、职场高压下的创伤修复、急性情绪应激障碍后的心理重建。尤其擅长针对心思细腻、直觉敏锐的高敏感人群提供定制化的深层意识梳理系统。</p >
+            </div>
+
+            <div class="info-card">
+                <h2>收费标准与预约说明</h2>
+                <p><strong>个案咨询收费：</strong>1200元 / 50分钟（初诊建档：1500元 / 60分钟）。</p >
+                <p><strong>可预约时段：</strong>每周一至周五 09:00 - 18:00（需至少提前三天预约，不接受当天临时无预约来访）。</p >
+                <p>针对部分面临极度严重的急性心理危机、且经济困难的年轻群体，工作室常年提供一定名额的“一隅星光”公益援助方案，需提供相关资料经线上初步测评后安排。</p >
+            </div>
+
+            <div class="info-card">
+                <h2>咨询方式与联系渠道</h2>
+                <p><strong>咨询方式：</strong>支持线上深度加密视讯咨询，或线下杭州南山路工作室面对面私密访谈。</p >
+                <p><strong>联系方式：</strong></p >
+                <ul>
+                    <li>工作室预约专线：0571-8890XXXX</li>
+                    <li>电子联络信箱：contact@elim-studio.org</li>
+                    <li>线下地址：杭州市上城区南山路12号</li>
+                </ul>
+            </div>
+
+        </main>
+
+        <!-- 右侧：供账号密码使用的登录侧边栏 -->
+        <aside class="login-sidebar">
+            <div class="login-card">
+                <h3>登录界面</h3>
+                <form onsubmit="event.preventDefault(); handleLogin();">
+                    <div class="form-group">
+                        <label for="username">账号名</label>
+                        <input type="text" id="username" required placeholder="请输入您的登记账号">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">六位加密识别码</label>
+                        <input type="password" id="password" required placeholder="请输入您的识别码">
+                    </div>
+                    <button type="submit" class="login-btn">确认登录</button>
+                </form>
+            </div>
+        </aside>
+
+    </div>
+
+    <script>
+        function handleLogin() {
+            var user = document.getElementById('username').value;
+            alert("正在校对内部档案...账户名: " + user);
+        }
+    </script>
+</body>
+</html>
