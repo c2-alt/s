@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一块油渍 - 全网搜索</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* 模拟搜索引擎头部 */
+        .search-header {
+            border-bottom: 1px solid #e1e1e1;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #fff;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #4e6ef2; /* 经典搜索蓝 */
+            text-decoration: none;
+        }
+
+        .search-box-container {
+            flex: 1;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: 2px solid #4e6ef2;
+            border-radius: 10px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        /* 搜索结果区域 */
+        .result-container {
+            max-width: 650px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .result-stats {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        /* 模拟百度词条/卡片样式 */
+        .search-card {
+            border: 1px solid #e3e5e7;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            background: #fff;
+        }
+
+        .card-source {
+            font-size: 13px;
+            color: #939393;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        /* 可点击的词条大标题 */
+        .card-title {
+            font-size: 19px;
+            color: #1a0dab;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .card-title:hover {
+            text-decoration: underline;
+        }
+
+        /* 词条简述 */
+        .card-profile {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .avatar-placeholder {
+            width: 50px;
+            height: 50px;
+            background-color: #f0f2f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #909399;
+            flex-shrink: 0;
+            border: 1px solid #e4e7ed;
+        }
+
+        .profile-text {
+            font-size: 14px;
+            color: #4e4e4e;
+            line-height: 1.6;
+        }
+
+        .meta-info {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #939393;
+            display: flex;
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部搜索栏 -->
+    <div class="search-header">
+        <div class="logo">🔍 探搜</div>
+        <div class="search-box-container">
+            <input type="text" class="search-input" value="一块油渍" readonly>
+        </div>
+    </div>
+
+    <!-- 结果列表 -->
+    <div class="result-container">
+        <div class="result-stats">为你找到相关结果约 1 个</div>
+
+        <!-- 核心词条卡片 -->
+        <div class="search-card">
+            <div class="card-source">🌐 围博个人主页 - 站内名片</div>
+            
+            <!-- 点击此处直接跳转到博客主页 -->
+            <a href="weibo_blog1.html" class="card-title">一块油渍 的围博个人空间</a >
+            
+            <div class="card-profile">
+                <div class="avatar-placeholder">👤</div>
+                <div class="profile-text">
+                    <strong>简介：</strong>这里没有人。
+                    <div class="meta-info">
+                        <span>关注 106</span>
+                        <span>粉丝 98</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
