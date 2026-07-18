@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>The Return - 归处</title>
+    <style>
+        body { 
+            background-color: #ffffff; 
+            color: #111111; 
+            margin: 0; 
+            padding: 0; 
+            font-family: "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+            line-height: 2;
+            /* 微弱的精神污染背景网格 */
+            background-image: linear-gradient(rgba(235, 235, 235, 0.4) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(235, 235, 235, 0.4) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* 精神污染：文字隐约的抖动重影效果 */
+        @keyframes textFlicker {
+            0% { text-shadow: 1px 0 0 rgba(255,0,0,0.1), -1px 0 0 rgba(0,0,255,0.1); }
+            50% { text-shadow: -1px 0 0 rgba(255,0,0,0.15), 1px 0 0 rgba(0,0,255,0.15); }
+            100% { text-shadow: 1px 0 0 rgba(255,0,0,0.1), -1px 0 0 rgba(0,0,255,0.1); }
+        }
+
+        .main-container { 
+            max-width: 850px; 
+            margin: 0 auto; 
+            padding: 60px 40px; 
+        }
+
+        /* 核心大标题 */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: textFlicker 3s infinite;
+        }
+        .brand-title {
+            font-size: 42px;
+            font-weight: 300;
+            letter-spacing: 12px;
+            margin: 0;
+            color: #000;
+        }
+        .brand-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 6px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* 导航菜单 */
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 60px;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 20px;
+        }
+        .nav-item {
+            font-size: 17px;
+            color: #555;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 400;
+            letter-spacing: 2px;
+            padding: 5px 10px;
+            transition: all 0.2s;
+        }
+        .nav-item:hover, .nav-item.active {
+            color: #000;
+            font-weight: 600;
+            border-bottom: 2px solid #000;
+        }
+
+        /* 内容板块区域 */
+        .content-section {
+            display: none;
+            font-size: 17px;
+            color: #333;
+            animation: fadeIn 0.5s ease;
+        }
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 文章排版样式 */
+        .article-block {
+            margin-bottom: 45px;
+        }
+        .article-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .article-text {
+            text-align: justify;
+            color: #444;
+        }
+        .zhushu {
+            margin-top: 8px;
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* 殿堂专属排版 */
+        .spirit-card {
+            border: 1px solid #eee;
+            padding: 30px;
+            margin-bottom: 30px;
+            background-color: rgba(255,255,255,0.8);
+        }
+        .spirit-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .spirit-meta {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- 页面顶部大字 -->
+        <div class="brand-header">
+            <h1 class="brand-title">归处</h1>
+            <div class="brand-subtitle">The Return</div>
+        </div>
+
+        <!-- 首页菜单 -->
+        <div class="nav-menu">
+            <span class="nav-item active" onclick="switchTab('jiaoyi', this)">教义</span>
+            <span class="nav-item" onclick="switchTab('shengci', this)">圣词</span>
+            <span class="nav-item" onclick="switchTab('diantang', this)">殿堂</span>
+        </div>
+
+        <!-- 板块1：教义 -->
+        <div id="jiaoyi" class="content-section active">
+            <div class="article-block">
+                <div class="article-title">#1 粗糙的维度</div>
+                <div class="article-text">我们目前所处的物质世界，是一个粗糙且扭曲的低密度维度。在这个维度里，疾病、焦虑、社交恐惧、躯体化疼痛，都是肉身对灵魂的排异反应。</div>
+            </div>
+            
+            <div class="article-block">
+                <div class="article-title">#2 贬落的种子</div>
+                <div class="article-text">所有患有精神疾患、对现实感到痛苦的人，并不是异类，而是从高阶维度不小心贬落凡尘的“灵性种子”。你们之所以痛苦，是因为你们的灵魂保留了对天国轻盈感的记忆，无法适应粗糙维度的重力。</div>
+            </div>
+
+            <div class="article-block">
+                <div class="article-title">#3 筑屋与赐福</div>
+                <div class="article-text">死亡并不是终结，而是种子破壳的引渡仪式。先走一步的同伴（已解脱者），会在彼岸的白花原野上合力建造一栋永恒的圣殿。新加入的同伴，需要带去你们在现实中承受的所有痛苦（即砖块），将其转化为圣殿的基石。当圣殿落成之日，所有人将共享永恒的平静。</div>
+            </div>
+        </div>
+
+        <!-- 板块2：圣词 -->
+        <div id="shengci" class="content-section">
+            <div class="article-block">
+                <div class="article-title">1. 游子</div>
+                <div class="article-text">
+                    <strong>释义：</strong>尚未跃迁、仍被禁锢在肉身笼牢中的灵魂。<br>
+                    <div class="zhushu"><strong>注疏：</strong>游子不是生病了，而是你们的灵魂过于纯净，无法兼容这个由钢筋水泥、繁杂社交与肉体凡胎构成的粗糙世界。在这个世界里的每一天，对游子而言都是在异乡服刑、流浪。你们感受到的痛苦、幻听与惊恐，正是高维母亲对游子的声声呼唤。<br>别怕，游子只是暂住旅店，旅店很脏，但回家的路很干净。</div>
+                </div>
+            </div>
+
+            <div class="article-block">
+                <div class="article-title">2. 引路人</div>
+                <div class="article-text">
+                    <strong>释义：</strong>掌握解离密匙、在现实中负责筛选、清洗并护送游子归位的摆渡者。<br>
+                    <div class="zhushu"><strong>注疏：</strong>重力的枷锁太沉，长期流浪的游子往往会迷失在理性的防御机制中。因此，需要引路人的存在。<br>引路人拥有最顶尖的理性医学技术，但她们的眼睛凝视着彼岸。引路人的职责不是在人间的泥潭里缝补你们的伤口，而是在你们的潜意识中编码通往回家的地图。<br>当引路人发出信号，迷途的游子便能顺着声音，微笑着走向跃迁的起点。</div>
+                </div>
+            </div>
+
+            <div class="article-block">
+                <div class="article-title">3. 原野</div>
+                <div class="article-text">
+                    <strong>释义：</strong>神国在彼岸的具象延展。一片超越重力限制、开满白色无名之花的永恒实体空间。<br>
+                    <div class="zhushu"><strong>注疏：</strong>那是一片绝对静谧的实地。在那里，没有刺耳的噪音，没有恼人的幻觉，更没有任何生理或心理上的痛苦。<br>在原野上，残破的肢体将被重新修复，干枯的眼泪会化作露珠。你可以无拘无束地在白花中奔跑、悬浮，或者用最轻盈的身姿起舞。</div>
+                </div>
+            </div>
+
+            <div class="article-block">
+                <div class="article-title">4. 圣殿</div>
+                <div class="article-text">
+                    <strong>释义：</strong>坐落于原野中央、由首席圣灵亲自奠基、由所有归位者共同修筑的永恒安息之所。<br>
+                    <div class="zhushu"><strong>注疏：</strong>圣殿是所有游子最终的家。在引路人 Elim 的供养下，已有数十位圣灵带着她们在人间的“精神之砖”归位。<br>这是一座宏伟的圣殿。圣殿里的每一块砖，都代表着一位解脱者。殿内燃着永不熄灭的薪火，每一位新到的游子，都会在圣殿中获得属于自己的专属位置，与最纯洁的灵魂们围炉长坐。</div>
+                </div>
+            </div>
+
+            <div class="article-block">
+                <div class="article-title">5. 归处</div>
+                <div class="article-text">
+                    <strong>释义：</strong>极致的终点。超越空间、超越时间、一切意识与灵性最终融合的恒定最高点。<br>
+                    <div class="zhushu"><strong>注疏：</strong>它是所有物理法则的寂灭，是所有情绪波动在最高处的恒定。在人间的世俗逻辑里，人们管它叫死亡；但在高维视角下，那是真正的归位。进入归处，你将不再是孤立的个体，你将与所有游子融为一体，与宇宙的初源同频。<br>那里没有过去，没有未来，只有永恒的平静。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 板块3：殿堂 -->
+        <div id="diantang" class="content-section">
+            <div class="spirit-card">
+                <div class="spirit-name">首席圣灵：Danica（樊星）</div>
+                <div class="spirit-meta">
+                    <span>神位封号：彼岸的永恒星辰</span> | 
+                    <span>引渡时间：2015年9月5日</span>
+                </div>
+                <div class="article-text"><strong>尊者赞词：</strong>她是第一颗完美破壳的种子。她用最轻盈的姿态摆脱了重力的束缚。她已经抵达白花原野，正在圣殿的中央为我们所有人指引前进的道路。</div>
+            </div>
+
+            <div class="spirit-card" style="border-color: #ffc9c9; background-color: rgba(255, 245, 245, 0.5);">
+                <div class="spirit-name">首席引路人：Elim（钟凌骁）</div>
+                <div class="spirit-meta">
+                    <span>神位封号：彼岸凌霄/永恒的引渡者</span> | 
+                    <span>引渡时间：刚刚（2026年9月5日）</span>
+                </div>
+                <div class="article-text"><strong>尊者赞词：</strong>Elim在凡尘潜伏，利用其顶尖的意识重构与催眠技术源源不断地输送散落的种子，去往彼岸陪伴Danica，并为Danica的圣殿添砖加瓦。</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId, element) {
+            // 切换菜单激活状态
+            var items = document.getElementsByClassName('nav-item');
+            for (var i = 0; i < items.length; i++) {
+                items[i].classList.remove('active');
+            }
+            element.classList.add('active');
+
+            // 切换内容板块显隐
+            var sections = document.getElementsByClassName('content-section');
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].classList.remove('active');
+            }
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
