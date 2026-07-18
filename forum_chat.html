@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日常灌水 - 共鸣社区</title>
+    <style>
+        /* 全局低饱和暖色调 */
+        body {
+            background-color: #fcfaf2;
+            color: #5a504a;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+        }
+
+        /* 顶部返回导航 */
+        .header-bar {
+            background-color: #f4eae1;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eadecf;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back-btn {
+            color: #7c6d65;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            color: #bfa391;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #61534b;
+        }
+
+        /* 核心内容区 */
+        .main-content {
+            max-width: 750px;
+            margin: 30px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: #61534b;
+            margin: 0;
+            border-bottom: 2px solid #eadecf;
+            padding-bottom: 10px;
+        }
+
+        /* 帖子主卡片 */
+        .post-card {
+            background-color: #ffffff;
+            border: 1px solid #f1eae2;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(180, 160, 140, 0.04);
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #9c8c82;
+            margin-bottom: 15px;
+        }
+
+        .post-author {
+            font-weight: bold;
+            color: #7c6d65;
+        }
+
+        .post-title {
+            font-size: 18px;
+            color: #61534b;
+            margin: 0 0 15px 0;
+            font-weight: bold;
+        }
+
+        .post-text {
+            font-size: 15px;
+            color: #5a504a;
+            white-space: pre-wrap;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        /* 互动数据栏 */
+        .post-actions {
+            display: flex;
+            gap: 20px;
+            border-top: 1px solid #faf8f2;
+            padding-top: 15px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: #8c7e74;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0;
+            outline: none;
+        }
+
+        .action-btn:hover {
+            color: #bfa391;
+        }
+
+        .action-btn.liked {
+            color: #d2918c;
+            font-weight: bold;
+        }
+
+        /* 评论区默认隐藏，带有缩放和展开效果 */
+        .comment-section {
+            background-color: #faf8f2;
+            border-radius: 8px;
+            padding: 0 20px;
+            border: 1px solid transparent;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+            margin-top: 0;
+        }
+
+        .comment-section.open {
+            padding: 15px 20px;
+            max-height: 2000px;
+            border-color: #f5ede2;
+            margin-top: 15px;
+        }
+
+        .comment-section-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #8c7e74;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #f1eae2;
+            padding-bottom: 5px;
+        }
+
+        .comment-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed #eedfcb;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .comment-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .comment-user {
+            font-size: 13px;
+            font-weight: bold;
+            color: #7c6d65;
+        }
+
+        .comment-text {
+            font-size: 14px;
+            color: #5a504a;
+            white-space: pre-wrap;
+        }
+
+        .comment-footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶端导航 -->
+    <div class="header-bar">
+        <a class="back-btn" onclick="history.back()">ㄑ 返回社区分区</a >
+        <div class="page-title">共鸣社区 ➔ 日常灌水</div>
+    </div>
+
+    <!-- 主体帖子列表 -->
+    <div class="main-content">
+        
+        <h1 class="section-title">☕ 日常灌水</h1>
+
+        <!-- 帖子 1：铃儿响叮当 -->
+        <div class="post-card">
+            <div class="post-header">
+                <span class="post-author">发布者：铃儿响叮当</span>
+                <span></span>
+            </div>
+            <h2 class="post-title">戒断期做噩梦，梦到微积分挂科，吓得直接坐起来了</h2>
+            <div class="post-text">最近在遵医嘱减药，结果这几天晚上疯狂做噩梦。
+昨天晚上梦到我回到了高三，数学老师拿着一张0分的卷子抽我嘴巴子，说我这辈子都考不上大学，我直接吓出一身冷汗坐起来了。
+我今年都28了，已经上班四年了啊！
+微积分到底要折磨我到什么时候？减药期做噩梦这事儿有解吗？</div>
+            
+            <div class="post-actions">
+                <button class="action-btn" onclick="toggleLike(this, 94)">❤️ <span class="count">94</span></button>
+                <button class="action-btn" onclick="toggleComments('chat-comments-1')">💬 查看评论 (13)</button>
+            </div>
+
+            <div id="chat-comments-1" class="comment-section">
+                <div class="comment-section-title">热门评论</div>
+                <div class="comment-item">
+                    <div class="comment-user">大呆呆</div>
+                    <div class="comment-text">哈哈哈哈哈哈，高考和微积分是刻在中国人DNA里的究极噩梦，很多人都会梦到的！</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 42)">❤️ <span class="count">42</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">SeVeN</div>
+                    <div class="comment-text">减药期多梦很正常，大脑神经递质在重新调整呢。不过楼主这噩梦太吓人了，建议醒了奖励自己一杯奶茶压压惊。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 19)">❤️ <span class="count">19</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">夏天</div>
+                    <div class="comment-text">正常正常，我前几天还梦到上班迟到被老板扣光年终奖。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 12)">❤️ <span class="count">12</span></button></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子 2：极光 (死讯) -->
+        <div class="post-card">
+            <div class="post-header">
+                <span class="post-author">发布者：极光</span>
+                <span></span>
+            </div>
+            <h2 class="post-title">替我先生向大家作最后的告别</h2>
+            <div class="post-text">各位病友好，我是“极光”的妻子。
+很抱歉用这个账号发帖。我先生于上周四的下午，从我们住的26楼一跃而下，永远地离开了这个世界。
+整理他的遗物时，我看到了他之前在这个论坛写的康复分享。作为家属，我真的很感谢钟凌骁医生这一年来的治疗。
+我先生是双相，长年情绪折磨得他痛不欲生，但在钟医生最后的几次催眠和情绪梳理后，他整个人变得无比平静。
+他走前的那天早上，甚至微笑着给我做了早餐，我当时以为他真的彻底治愈了，却没想到那是一场永别。
+警方判定是自杀，现场没有留遗书。
+他走得很安详，脸上甚至带着笑。
+谢谢大家在这个论坛曾经给他的鼓励，愿他不再受情绪的折磨了。</div>
+            
+            <div class="post-actions">
+                <button class="action-btn" onclick="toggleLike(this, 840)">❤️ <span class="count">840</span></button>
+                <button class="action-btn" onclick="toggleComments('chat-comments-2')">💬 查看评论 (28)</button>
+            </div>
+
+            <div id="chat-comments-2" class="comment-section">
+                <div class="comment-section-title">热门评论</div>
+                <div class="comment-item">
+                    <div class="comment-user">一只狗不李</div>
+                    <div class="comment-text">rip</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 154)">❤️ <span class="count">154</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">大步向前走</div>
+                    <div class="comment-text">逝者安息</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 98)">❤️ <span class="count">98</span></button></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子 3：爱你所爱 -->
+        <div class="post-card">
+            <div class="post-header">
+                <span class="post-author">发布者：爱你所爱</span>
+                <span></span>
+            </div>
+            <h2 class="post-title">有没有人在玩最近很火的那个种田游戏啊，求加好友组队做任务！</h2>
+            <div class="post-text">有人玩吗？我的农场刚盖好两间温室，急需搭子一起去矿洞刷材料！来几个情绪稳定的病友，一起在虚拟世界里逃避现实！</div>
+            
+            <div class="post-actions">
+                <button class="action-btn" onclick="toggleLike(this, 34)">❤️ <span class="count">34</span></button>
+                <button class="action-btn" onclick="toggleComments('chat-comments-3')">💬 查看评论 (30)</button>
+            </div>
+
+            <div id="chat-comments-3" class="comment-section">
+                <div class="comment-section-title">热门评论</div>
+                <div class="comment-item">
+                    <div class="comment-user">皮皮猫</div>
+                    <div class="comment-text">举手！</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 8)">❤️ <span class="count">8</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">四块玉</div>
+                    <div class="comment-text">楼主私我，我晚上上线加你。我负责种地，你负责去矿洞挨打（bushi）。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 15)">❤️ <span class="count">15</span></button></div>
+                </div>
+                <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 15)">❤️ <span class="count">15</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">不是一条鱼</div>
+                    <div class="comment-text">带我一个！</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 5)">❤️ <span class="count">5</span></button></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子 4：vila会好运 -->
+        <div class="post-card">
+            <div class="post-header">
+                <span class="post-author">发布者：vila会好运</span>
+                <span></span>
+            </div>
+            <h2 class="post-title">钟医生的号也太难约了吧！抢了三个星期都没抢到！</h2>
+            <div class="post-text">我从上个月底就开始抢钟医生的预约，每次都是秒没。
+钟医生有别的VIP渠道吗？有抢号成功的秘籍分享一下吗，救救孩子！</div>
+            
+            <div class="post-actions">
+                <button class="action-btn" onclick="toggleLike(this, 112)">❤️ <span class="count">112</span></button>
+                <button class="action-btn" onclick="toggleComments('chat-comments-4')">💬 查看评论 (34)</button>
+            </div>
+
+            <div id="chat-comments-4" class="comment-section">
+                <div class="comment-section-title">热门评论</div>
+                <div class="comment-item">
+                    <div class="comment-user">可可西里</div>
+                    <div class="comment-text">正常，钟医生可是学历与经验并存，名气太大了。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 24)">❤️ <span class="count">24</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">谈笑</div>
+                    <div class="comment-text">楼主如果很着急，其实可以约诊所的其他医生，虽然比不上钟医生，但有些效果也不错的，需要的话可以私我。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 11)">❤️ <span class="count">11</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">平平无奇的老鼠</div>
+                    <div class="comment-text">对了，提醒楼主一下，钟医生每年三月和九月都是不接诊的。这两个月好像是她的私人休假期，或者是去国外参加学术交流了吧，反正这两个月别空等了。</div>
+                    <!-- 楼主次级回复 -->
+                    <div style="margin-top: 8px; padding-left: 15px; border-left: 2px solid #dbcfc2; font-size: 13.5px;">
+                        <span class="comment-user">vila会好运（楼主）</span>回复 <span style="color:#7c6d65;">平平无奇的老鼠</span>：<br>
+                        <span class="comment-text">啊？一年休两个月吗？心理医生福利这么好的吗！羡慕了，谢谢提醒。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleComments(commentId) {
+            var el = document.getElementById(commentId);
+            el.classList.toggle('open');
+        }
+
+        function toggleLike(btn, baseCount) {
+            var countSpan = btn.querySelector('.count');
+            if (btn.classList.contains('liked')) {
+                btn.classList.remove('liked');
+                countSpan.textContent = baseCount;
+            } else {
+                btn.classList.add('liked');
+                countSpan.textContent = baseCount + 1;
+            }
+        }
+    </script>
+</body>
+</html>
