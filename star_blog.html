@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Starlight_Xing 的个人空间 - 博客网</title>
+    <style>
+        body { 
+            background-color: #f4f6f9; 
+            color: #333333; 
+            margin: 0; 
+            padding: 0; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.8;
+        }
+        /* 顶部导航 */
+        .nav-bar { 
+            background-color: #ffffff; 
+            padding: 15px 20px; 
+            border-bottom: 1px solid #e1e4e8; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .back-link { 
+            color: #0066cc; 
+            text-decoration: none; 
+            font-size: 15px; 
+            cursor: pointer;
+        }
+        .back-link:hover { text-decoration: underline; }
+        
+        /* 个人资料卡片 */
+        .profile-card { 
+            max-width: 700px; 
+            margin: 25px auto; 
+            background-color: #ffffff; 
+            border: 1px solid #e1e4e8; 
+            border-radius: 8px; 
+            padding: 30px; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .profile-header { display: flex; align-items: center; gap: 20px; }
+        .avatar-box { 
+            width: 75px; 
+            height: 75px; 
+            background-color: #eef2f7; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 35px; 
+            border: 1px solid #d1d5da;
+        }
+        .profile-info { display: flex; flex-direction: column; gap: 5px; }
+        .nickname { font-size: 22px; font-weight: bold; color: #111; }
+        .stats { font-size: 14px; color: #586069; display: flex; gap: 20px; }
+        .stats strong { color: #24292e; }
+
+        /* 博客列表 */
+        .blog-container { 
+            max-width: 700px; 
+            margin: 0 auto 50px auto; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+        }
+        .blog-card { 
+            background-color: #ffffff; 
+            border: 1px solid #e1e4e8; 
+            border-radius: 8px; 
+            padding: 30px; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .blog-date { 
+            font-size: 13px; 
+            color: #586069; 
+            margin-bottom: 12px; 
+            font-weight: 500;
+        }
+        .blog-content { 
+            font-size: 17px; 
+            color: #24292e; 
+            text-align: justify; 
+            white-space: pre-wrap; 
+        }
+        .mention { 
+            color: #0366d6; 
+            text-decoration: none; 
+            font-weight: 500; 
+        }
+        .mention:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部状态条 -->
+    <div class="nav-bar">
+        <a class="back-link" href=" ">ㄑ 返回搜索结果</a >
+        <div style="font-size: 16px; font-weight: bold; color: #24292e;">个人主页</div>
+    </div>
+
+    <!-- 用户名片区 -->
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="avatar-box">✨</div>
+            <div class="profile-info">
+                <div class="nickname">Starlight_Xing</div>
+                <div class="stats">
+                    <span>关注 <strong>568</strong></span>
+                    <span>粉丝 <strong>660</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 博客正文时间线 -->
+    <div class="blog-container">
+
+        <!-- 2015-09-05 -->
+        <div class="blog-card">
+            <div class="blog-date">2015-09-05</div>
+            <div class="blog-content">妈妈、花儿，别为我哭。那个世界一点也不冷，他们已经帮我把圣殿盖好了，在开满白色花朵的悬崖边。风停了，我该走了。</div>
+        </div>
+
+        <!-- 2015-05-24 -->
+        <div class="blog-card">
+            <div class="blog-date">2015-05-24</div>
+            <div class="blog-content">去了归处，真的就没有痛苦了吗？</div>
+        </div>
+
+        <!-- 2015-01-11 -->
+        <div class="blog-card">
+            <div class="blog-date">2015-01-11</div>
+            <div class="blog-content">我知道我已经足够幸福了，有爱我的妈妈和花儿，有成功的学业和事业，为什么我就是这么痛苦呢？也许我该放松一下，可我做不到。</div>
+        </div>
+
+        <!-- 2014-10-21 -->
+        <div class="blog-card">
+            <div class="blog-date">2014-10-21</div>
+            <div class="blog-content">樊女士三五天就坐高铁从杭州来上海看我，我和花儿抱怨，结果她说下次和我妈一起来！坏人 (−_−＃) <a class="mention" href="#">@抱着星星的花</a ></div>
+        </div>
+
+        <!-- 2014-08-15 -->
+        <div class="blog-card">
+            <div class="blog-date">2014-08-15</div>
+            <div class="blog-content">今天在公寓里醒来时，突然找不到双腿的感觉了。时差、高压、开不完的跨国会。</div>
+        </div>
+
+        <!-- 2013-11-07 -->
+        <div class="blog-card">
+            <div class="blog-date">2013-11-07</div>
+            <div class="blog-content">今天差点做坏了一个很重要的跨国方案，虽然总监只是拍了拍我肩膀说新人很正常，可我自己放不过自己。一遇到这种高压环境，我的脑子就会像当年查分那天一样，突然一片漆黑。</div>
+        </div>
+
+        <!-- 2013-10-22 -->
+        <div class="blog-card">
+            <div class="blog-date">2013-10-22</div>
+            <div class="blog-content">天旋地转，差点摔倒，明明已经吃药了。</div>
+        </div>
+
+        <!-- 2013-09-11 -->
+        <div class="blog-card">
+            <div class="blog-date">2013-09-11</div>
+            <div class="blog-content">医生说我的抗压能力太差了，一次高考失利就把我永恒困在那种痛苦里，这样的性格该怎么步入社会？可我真的不知道该怎么改变自己。</div>
+        </div>
+
+        <!-- 2012-03-12 -->
+        <div class="blog-card">
+            <div class="blog-date">2012-03-12</div>
+            <div class="blog-content">妈妈和花儿一起给我过生日，好幸福！(≧▽≦)</div>
+        </div>
+
+        <!-- 2011-10-24 -->
+        <div class="blog-card">
+            <div class="blog-date">2011-10-24</div>
+            <div class="blog-content">人居然能在睡着的时候被耳鸣吵醒，起来了就不困了，干脆复习，这学期争取保持成绩。</div>
+        </div>
+
+        <!-- 2011-06-18 -->
+        <div class="blog-card">
+            <div class="blog-date">2011-06-18</div>
+            <div class="blog-content">期末绩点3.87，刚好樊女士来北京开会，带我和花儿去吃了那家很难预约的黑珍珠餐厅。</div>
+        </div>
+
+        <!-- 2010-11-16 -->
+        <div class="blog-card">
+            <div class="blog-date">2010-11-16</div>
+            <div class="blog-content">知知常乐这么简单的事为什么我做不到？明明我已经拥有比别人多得多的东西了，我有什么资格抑郁，有什么资格痛苦？医生说得对，我就是太矫情了，太钻牛角尖了。</div>
+        </div>
+
+        <!-- 2010-09-27 -->
+        <div class="blog-card">
+            <div class="blog-date">2010-09-27</div>
+            <div class="blog-content">还是去做了心理治疗，希望能有帮助。</div>
+        </div>
+
+        <!-- 2010-06-22 -->
+        <div class="blog-card">
+            <div class="blog-date">2010-06-22</div>
+            <div class="blog-content">那件事已经过去了两年了，为什么我还是总做那样的噩梦，不是回到查分那天，就是复读也落榜了，醒来浑身冷汗，头疼。</div>
+        </div>
+
+        <!-- 2009-12-21 -->
+        <div class="blog-card">
+            <div class="blog-date">2009-12-21</div>
+            <div class="blog-content">我的钟凌骁，我的凌霄花，我的小花儿，二十岁生日快乐！ヾ(≧∇≦)ゝ <a class="mention" href="#">@抱着星星的花</a ></div>
+        </div>
+
+        <!-- 2009-07-11 -->
+        <div class="blog-card">
+            <div class="blog-date">2009-07-11</div>
+            <div class="blog-content"><a class="mention" href="#">@抱着星星的花</a > 学长请多指教哦 ψ(｀∇´)ψ</div>
+        </div>
+
+        <!-- 2008-08-12 -->
+        <div class="blog-card">
+            <div class="blog-date">2008-08-12</div>
+            <div class="blog-content">没有毕业旅行，只有做不完的复读模拟卷。妈妈为了陪我，连总公司晋升的外派机会都放弃了，每天回家给我做饭。看着她小心翼翼照顾我自尊的样子，我反而更痛苦了。</div>
+        </div>
+
+        <!-- 2008-07-09 -->
+        <div class="blog-card">
+            <div class="blog-date">2008-07-09</div>
+            <div class="blog-content">我第一次发现自己这么经不起失败。</div>
+        </div>
+
+        <!-- 2008-07-02 -->
+        <div class="blog-card">
+            <div class="blog-date">2008-07-02</div>
+            <div class="blog-content">几天就好像在做梦一样，我多希望这只是一场噩梦呢。</div>
+        </div>
+
+        <!-- 2008-06-27 -->
+        <div class="blog-card">
+            <div class="blog-date">2008-06-27</div>
+            <div class="blog-content">512，我根本不敢看妈妈知道分数时的表情，也不敢接老师和同学打来想讨彩头的电话，我只想消失，只想死掉。</div>
+        </div>
+
+        <!-- 2008-06-22 -->
+        <div class="blog-card">
+            <div class="blog-date">2008-06-22</div>
+            <div class="blog-content">为什么。</div>
+        </div>
+
+        <!-- 2007-03-22 -->
+        <div class="blog-card">
+            <div class="blog-date">2007-03-22</div>
+            <div class="blog-content">今天放学和花儿在南山路散步，路过国美的时候，看到了凌叔叔的画展海报，花儿说很遗憾一点都没继承到她爸的艺术细胞。(＾ω＾)</div>
+        </div>
+
+    </div>
+
+</body>
+</html>
