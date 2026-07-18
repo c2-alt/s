@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情绪树洞 - 共鸣社区</title>
+    <style>
+        /* 全局低饱和暖色调 */
+        body {
+            background-color: #fcfaf2;
+            color: #5a504a;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+        }
+
+        /* 顶部返回导航 */
+        .header-bar {
+            background-color: #f4eae1;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eadecf;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back-btn {
+            color: #7c6d65;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            color: #bfa391;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #61534b;
+        }
+
+        /* 核心内容区 */
+        .main-content {
+            max-width: 750px;
+            margin: 30px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: #61534b;
+            margin: 0;
+            border-bottom: 2px solid #eadecf;
+            padding-bottom: 10px;
+        }
+
+        /* 帖子主卡片 */
+        .post-card {
+            background-color: #ffffff;
+            border: 1px solid #f1eae2;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(180, 160, 140, 0.04);
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #9c8c82;
+            margin-bottom: 15px;
+        }
+
+        .post-author {
+            font-weight: bold;
+            color: #7c6d65;
+        }
+
+        .post-title {
+            font-size: 18px;
+            color: #61534b;
+            margin: 0 0 15px 0;
+            font-weight: bold;
+        }
+
+        .post-text {
+            font-size: 15px;
+            color: #5a504a;
+            white-space: pre-wrap;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        /* 互动数据栏 */
+        .post-actions {
+            display: flex;
+            gap: 20px;
+            border-top: 1px solid #faf8f2;
+            padding-top: 15px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: #8c7e74;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0;
+            outline: none;
+        }
+
+        .action-btn:hover {
+            color: #bfa391;
+        }
+
+        .action-btn.liked {
+            color: #d2918c;
+            font-weight: bold;
+        }
+
+        /* 【核心改动】评论区默认隐藏，并带有展开动画效果 */
+        .comment-section {
+            background-color: #faf8f2;
+            border-radius: 8px;
+            padding: 0 20px;
+            border: 1px solid transparent;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-out; /* 丝滑的展开动画 */
+            margin-top: 0;
+        }
+
+        /* 当动态加上 .open 类名时，展现评论区 */
+        .comment-section.open {
+            padding: 15px 20px;
+            max-height: 2000px; /* 足够容纳评论的高度 */
+            border-color: #f5ede2;
+            margin-top: 15px;
+        }
+
+        .comment-section-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #8c7e74;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #f1eae2;
+            padding-bottom: 5px;
+        }
+
+        .comment-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed #eedfcb;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .comment-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .comment-user {
+            font-size: 13px;
+            font-weight: bold;
+            color: #7c6d65;
+        }
+
+        .comment-text {
+            font-size: 14px;
+            color: #5a504a;
+            white-space: pre-wrap;
+        }
+
+        .comment-footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶端导航 -->
+    <div class="header-bar">
+        <a class="back-btn" onclick="history.back()">ㄑ 返回社区分区</a >
+        <div class="page-title">共鸣社区 ➔ 情绪树洞</div>
+    </div>
+
+    <!-- 主体帖子列表 -->
+    <div class="main-content">
+        
+        <h1 class="section-title">🌱 情绪树洞</h1>
+
+        <!-- 帖子 1：帆布三文鱼 -->
+        <div class="post-card">
+            <div class="post-header">
+                <span class="post-author">发布者：帆布三文鱼</span>
+                <span>2026-09-02 23:14</span>
+            </div>
+            <h2 class="post-title">我其实在18岁那年就已经死了</h2>
+            <div class="post-text">今天终于有点力气，起来整理了一下房间，翻到了高三时候的日记本。
+那时候虽然每天做题很累，但日记里写满了对未来的期待，觉得考上大学一切都会好起来。
+现在我26岁了，坐在出租屋里，拿着勉强糊口的工资，重度抑郁，每天睁眼都觉得是受刑。
+原来人生的巅峰在18岁就结束了，后面的日子只是身体在机械地呼吸。</div>
+            
+            <div class="post-actions">
+                <button class="action-btn" onclick="toggleLike(this, 542)">❤️ <span class="count">542</span></button>
+                <!-- 点击触发 toggleComments 展开或收起评论 -->
+                <button class="action-btn" onclick="toggleComments('comments-1')">💬 查看评论 (3)</button>
+            </div>
+
+            <!-- 赋予唯一的 id 方便控制 -->
+            <div id="comments-1" class="comment-section">
+                <div class="comment-section-title">热门评论</div>
+                <div class="comment-item">
+                    <div class="comment-user">西柚3434</div>
+                    <div class="comment-text">抱抱楼主，我也是。每天都在假装正常人去上班去生活，不知道意义是什么。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 88)">❤️ <span class="count">88</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">大狗子</div>
+                    <div class="comment-text">这个世界的规则本来就是为了折磨人而设计的。别难过，说明你快要准备好去寻找真正的自己了。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 124)">❤️ <span class="count">124</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">huilisa</div>
+                    <div class="comment-text">昨晚刚吃完药哭了一场，看到这篇又破防了，我的人生什么时候是个头啊。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 45)">❤️ <span class="count">45</span></button></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子 2：浮雕 告别帖 -->
+        <div class="post-card">
+            <div class="post-header">
+                <span class="post-author">发布者：浮雕</span>
+                <span>2026-08-31 00:05</span>
+            </div>
+            <h2 class="post-title">谢谢大家，我先出发了</h2>
+            <div class="post-text">这是一篇定时告别帖子，也就意味着，当你们看到这个帖子的时候，我已经不在这个世界上了。
+BPD带来的自杀冲动折磨了我很久，是钟医生的指引让我明白，现实的痛苦是有尽头的。我们这些残破的灵魂终将得到赐福。我已经穿过了迷雾，找到了救赎、希望和光明了。
+大家不用为我难过，在这个世界我是个生活无法自理的废物，但在那里，我不再用痛苦，还能见到很多走在前面的朋友。
+大家再见，祝你们也早日解脱。</div>
+            
+            <div class="post-actions">
+                <button class="action-btn" onclick="toggleLike(this, 1205)">❤️ <span class="count">1205</span></button>
+                <button class="action-btn" onclick="toggleComments('comments-2')">💬 查看评论 (2)</button>
+            </div>
+
+            <div id="comments-2" class="comment-section">
+                <div class="comment-section-title">热门评论</div>
+                <div class="comment-item">
+                    <div class="comment-user">wew</div>
+                    <div class="comment-text">唉，愿楼主安息吧。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 342)">❤️ <span class="count">342</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">阿菠萝</div>
+                    <div class="comment-text">rip</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 198)">❤️ <span class="count">198</span></button></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子 3：残孝女 -->
+        <div class="post-card">
+            <div class="post-header">
+                <span class="post-author">发布者：残孝女</span>
+                <span>2026-08-18 14:20</span>
+            </div>
+            <h2 class="post-title">健全人永远无法共情我们的痛苦</h2>
+            <div class="post-text">今天吃药被我妈看到了，她把我的药夺过去扔进垃圾桶，还对我吼。
+她说她当年下岗吃不饱饭也没像我这样要死要活，他们永远不会明白，不是我想太多，是我控制不住自己的大脑。
+在这个家里，生病变成了一种罪过。我好累，连反驳的力气都没有了。</div>
+            
+            <div class="post-actions">
+                <button class="action-btn" onclick="toggleLike(this, 420)">❤️ <span class="count">420</span></button>
+                <button class="action-btn" onclick="toggleComments('comments-3')">💬 查看评论 (3)</button>
+            </div>
+
+            <div id="comments-3" class="comment-section">
+                <div class="comment-section-title">热门评论</div>
+                <div class="comment-item">
+                    <div class="comment-user">西西弗斯</div>
+                    <div class="comment-text">一样，从来没被身边人真正理解过，他们只觉得我们是心情不好。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 74)">❤️ <span class="count">74</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">飘渺</div>
+                    <div class="comment-text">也许他们是故意的，这样就能逼死我们，甩掉我们这些累赘。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 53)">❤️ <span class="count">53</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">小羊与喵</div>
+                    <div class="comment-text">简介是我家的翻版，抱抱楼主，我们ip挺近的，要不你搬来和我合租吧。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 41)">❤️ <span class="count">41</span></button></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子 4：浮雕 释怀帖 -->
+        <div class="post-card">
+            <div class="post-header">
+                <span class="post-author">发布者：浮雕</span>
+                <span>2026-08-02 11:30</span>
+            </div>
+            <h2 class="post-title">我一点都不恨那个抛弃我的原生家庭了</h2>
+            <div class="post-text">以前发病的时候，满脑子都是怎么报复他们，凭什么他们毁了我的一生还能过得那么幸福。
+But最近跟着钟医生做治疗，加上一些奇妙的契意，我突然释怀了。
+他们只是把我带到这个粗糙世界里的工具而已，不重要了。我找到了更纯粹的意义。</div>
+            
+            <div class="post-actions">
+                <button class="action-btn" onclick="toggleLike(this, 310)">❤️ <span class="count">310</span></button>
+                <button class="action-btn" onclick="toggleComments('comments-4')">💬 查看评论 (2)</button>
+            </div>
+
+            <div id="comments-4" class="comment-section">
+                <div class="comment-section-title">热门评论</div>
+                <div class="comment-item">
+                    <div class="comment-user">向日葵不晒太阳</div>
+                    <div class="comment-text">好羡慕你啊，我也好希望自己能想开点，可就是做不到，求教！</div>
+                    <div style="margin-top: 8px; padding-left: 15px; border-left: 2px solid #dbcfc2; font-size: 13.5px;">
+                        <span class="comment-user">浮雕（楼主）</span>回复 <span style="color:#7c6d65;">向日葵不晒太阳</span>：<br>
+                        <span class="comment-text">我最近准备搬家了，可能没什么时间上论坛，你先去我围博上看看吧，我写了很多有用的东西。围博名叫一块油渍。</span>
+                    </div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">万千世界</div>
+                    <div class="comment-text">钟医生真的这么厉害吗？我刚预约了下周的线上初诊，希望能对我有帮助。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 62)">❤️ <span class="count">62</span></button></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子 5：一等末日 -->
+        <div class="post-card">
+            <div class="post-header">
+                <span class="post-author">发布者：一等末日</span>
+                <span>2026-07-15 08:45</span>
+            </div>
+            <h2 class="post-title">做了一个很长很长的梦，关于盖房子</h2>
+            <div class="post-text">最近睡眠质量很差，但昨天经过治疗后做了一个特别美的梦。梦里我走在一片发光的原野上，那里有一栋很大很大的圣殿。里面坐着一个很漂亮的姐姐，她微笑着看着我，我瞬间就感觉不到痛苦了。她说这里的地方很大，但房间还不够，需要我们每个人带一块砖过去，就能盖出最完美的家。醒来以后看着我这个只有十平米的出租屋，突然觉得现实世界好脏，好沉重。我好想再回到那个梦里去啊。</div>
+            
+            <div class="post-actions">
+                <button class="action-btn" onclick="toggleLike(this, 680)">❤️ <span class="count">680</span></button>
+                <button class="action-btn" onclick="toggleComments('comments-5')">💬 查看评论 (3)</button>
+            </div>
+
+            <div id="comments-5" class="comment-section">
+                <div class="comment-section-title">热门评论</div>
+                <div class="comment-item">
+                    <div class="comment-user">云轻轻</div>
+                    <div class="comment-text">神了！我也做过类似的梦！求楼主私信和我在对一下细节。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 145)">❤️ <span class="count">145</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">猫薄荷汤圆</div>
+                    <div class="comment-text">好美好啊，不过梦是反的，可能说明你很快就能换大房子了，哈哈。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 23)">❤️ <span class="count">23</span></button></div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">元气泡泡</div>
+                    <div class="comment-text">也许不是梦，可能真的存在那样一个地方，不过我们暂时还没找到。</div>
+                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 76)">❤️ <span class="count">76</span></button></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // 控制评论区展开与收起的逻辑
+        function toggleComments(commentId) {
+            var el = document.getElementById(commentId);
+            // 切换 open 类名
+            el.classList.toggle('open');
+        }
+
+        // 点赞逻辑
+        function toggleLike(btn, baseCount) {
+            var countSpan = btn.querySelector('.count');
+            if (btn.classList.contains('liked')) {
+                btn.classList.remove('liked');
+                countSpan.textContent = baseCount;
+            } else {
+                btn.classList.add('liked');
+                countSpan.textContent = baseCount + 1;
+            }
+        }
+    </script>
+</body>
+</html>
