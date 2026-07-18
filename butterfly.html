@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>破茧成蝶 - 钟凌骁心理咨询工作室</title>
+    <style>
+        /* 保持与主页高度一致的柔和温暖色调 */
+        body {
+            background-color: #fcfaf2; /* 柔和米白色 */
+            color: #5a504a; /* 低饱和深褐 */
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif;
+            line-height: 1.6;
+        }
+
+        /* 顶部返回导航 */
+        .header-bar {
+            background-color: #f4eae1; /* 柔和燕麦色 */
+            padding: 15px 20px;
+            border-bottom: 1px solid #eadecf;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back-btn {
+            color: #7c6d65;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            color: #bfa391;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #61534b;
+        }
+
+        /* 核心内容区 */
+        .main-content {
+            max-width: 750px;
+            margin: 30px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* 顶部提示浮窗 */
+        .notice-banner {
+            background-color: #f0e6dc; /* 稍微深一点的暖浅褐 */
+            border: 1px solid #e2d4c5;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            color: #7c6d65;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 6px rgba(180, 160, 140, 0.03);
+        }
+
+        .notice-icon {
+            font-size: 16px;
+        }
+
+        /* 案例卡片样式 */
+        .case-card {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(180, 160, 140, 0.05);
+            border: 1px solid #f1eae2;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .case-date {
+            font-size: 13px;
+            color: #9c8c82;
+            font-weight: 500;
+            border-bottom: 1px solid #fcfaf2;
+            padding-bottom: 5px;
+        }
+
+        /* 患者基本信息表格布局 */
+        .patient-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px 20px;
+            background-color: #faf8f2;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #f5ede2;
+            font-size: 14px;
+        }
+
+        @media (max-width: 480px) {
+            .patient-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-item span {
+            color: #8c7e74;
+            font-weight: 500;
+            margin-right: 5px;
+        }
+
+        /* 分享文本区 */
+        .share-box {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .share-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #7c6d65;
+        }
+
+        .share-content {
+            font-size: 14.5px;
+            color: #5a504a;
+            line-height: 1.7;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶端返回条 -->
+    <div class="header-bar">
+        <a class="back-btn" onclick="history.back()">ㄑ 返回主页</a >
+        <div class="page-title">钟凌骁心理咨询工作室</div>
+    </div>
+
+    <!-- 主体内容 -->
+    <div class="main-content">
+        
+        <!-- 上方告知浮窗 -->
+        <div class="notice-banner">
+            <span class="notice-icon">💡</span>
+            <span><strong>板块声明：</strong>此板块内容均为康复患者自愿无偿发布，知晓内容会全网公开。</span>
+        </div>
+
+        <!-- 2026-08-20 -->
+        <div class="case-card">
+            <div class="case-date">发布时间：2026-08-20</div>
+            <div class="patient-info">
+                <div class="info-item"><span>代号：</span>蓝鸟</div>
+                <div class="info-item"><span>性别：</span>女</div>
+                <div class="info-item"><span>年龄段：</span>00后</div>
+                <div class="info-item"><span>临床诊断：</span>PTSD、重度抑郁发作伴焦虑特质</div>
+                <div class="info-item"><span>治疗周期：</span>8个月</div>
+                <div class="info-item"><span>方案模式：</span>线下诊疗。CBT联合心理催眠疗法</div>
+            </div>
+            <div class="share-box">
+                <div class="share-title">【患者分享】</div>
+                <div class="share-content">钟医生的线下诊疗室有一种让人极度安心的磁场。在催眠治疗中，她用极其温柔的声音引导我进入了深度催眠，那次之后，我长久以来的躯体化症状奇迹般地消失了。钟医生不仅是医术精湛的治疗师，更是引渡我灵魂的恩人。谢谢她让我找到了真正的解脱，我现在感到前所未有的轻盈。</div>
+            </div>
+        </div>
+
+        <!-- 2026-07-06 -->
+        <div class="case-card">
+            <div class="case-date">发布时间：2026-07-06</div>
+            <div class="patient-info">
+                <div class="info-item"><span>代号：</span>早秋</div>
+                <div class="info-item"><span>性别：</span>男</div>
+                <div class="info-item"><span>年龄段：</span>90后</div>
+                <div class="info-item"><span>临床诊断：</span>惊恐障碍</div>
+                <div class="info-item"><span>治疗周期：</span>6个月</div>
+                <div class="info-item"><span>方案模式：</span>线上诊疗。系统脱敏法结合MBCT</div>
+            </div>
+            <div class="share-box">
+                <div class="share-title"><span>【亲友分享】</span></div>
+                <div class="share-content">我是“早秋”的妹妹。他深受惊恐发作的折磨多时，一度甚至无法走出家门。非常感谢钟医生这半年来的治疗，让我哥哥从抗拒到信赖，多次称赞钟医生治疗的专业性，现在他已经可以正常生活了，我们全家都对钟医生的专业指导表示由衷的感谢。</div>
+            </div>
+        </div>
+
+        <!-- 2026-06-18 -->
+        <div class="case-card">
+            <div class="case-date">发布时间：2026-06-18</div>
+            <div class="patient-info">
+                <div class="info-item"><span>代号：</span>浮雕</div>
+                <div class="info-item"><span>性别：</span>女</div>
+                <div class="info-item"><span>年龄段：</span>90后</div>
+                <div class="info-item"><span>临床诊断：</span>BPD、长期自伤行为及自杀意念</div>
+                <div class="info-item"><span>治疗周期：</span>9个月</div>
+                <div class="info-item"><span>方案模式：</span>线下诊疗。DBT及催眠阻断治疗</div>
+            </div>
+            <div class="share-box">
+                <div class="share-title">【患者分享】</div>
+                <div class="share-content">我是浮雕。自杀冲动折磨了我很久，整个人被困住走不出来，完全失去生活的基本能力。感谢钟医生的治疗和引导，让我在最绝望的时候有了可以信任的人。钟医生的指引让我明白痛苦有尽头，而我们终将得到赐福，去向那里，找到救赎、希望和光明。</div>
+            </div>
+        </div>
+
+        <!-- 2026-05-13 -->
+        <div class="case-card">
+            <div class="case-date">发布时间：2026-05-13</div>
+            <div class="patient-info">
+                <div class="info-item"><span>代号：</span>极光</div>
+                <div class="info-item"><span>性别：</span>男</div>
+                <div class="info-item"><span>年龄段：</span>80后</div>
+                <div class="info-item"><span>临床诊断：</span>双相情感障碍Ⅱ型</div>
+                <div class="info-item"><span>治疗周期：</span>1年</div>
+                <div class="info-item"><span>方案模式：</span>线上治疗。IPSRT联合催眠心理治疗</div>
+            </div>
+            <div class="share-box">
+                <div class="share-title">【患者分享】</div>
+                <div class="share-content">钟医生就像是一座灯塔。在最后的几次咨询里，她帮我做了高难度的情绪梳理，她告诉我，情绪的波动是因为灵魂不属于这个粗糙的维度。我现在情绪指标非常稳定，我已经找到了那个可以让情绪永远恒定在最高点的地方。谢谢钟医生，您完成了您的使命。</div>
+            </div>
+        </div>
+
+        <!-- 2026-04-16 -->
+        <div class="case-card">
+            <div class="case-date">发布时间：2026-04-16</div>
+            <div class="patient-info">
+                <div class="info-item"><span>代号：</span>梦乡</div>
+                <div class="info-item"><span>性别：</span>男</div>
+                <div class="info-item"><span>年龄段：</span>00后</div>
+                <div class="info-item"><span>临床诊断：</span>OCD、严重社交焦虑障碍</div>
+                <div class="info-item"><span>治疗周期：</span>5个月</div>
+                <div class="info-item"><span>方案模式：</span>线上治疗。ERP</div>
+            </div>
+            <div class="share-box">
+                <div class="share-title">【患者分享】</div>
+                <div class="share-content">钟医生的专业水平无可挑剔，她极其敏锐地抓住了我的核心冲突，从不评判我的怪异。用严格的ERP方案帮我打破了强迫行为的恶性循环。衷心感谢钟医生的帮助！</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
