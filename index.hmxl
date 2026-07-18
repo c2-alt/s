@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未知指引</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            padding: 40px 30px;
+            background-color: #1e1e1e;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        }
+
+        .intro-text {
+            font-size: 16px;
+            line-height: 2;
+            letter-spacing: 1px;
+            text-align: justify;
+            margin-bottom: 50px;
+            color: #dcdcdc;
+        }
+
+        .enter-btn {
+            background-color: #2b5c3f;
+            color: #ffffff;
+            border: none;
+            padding: 16px 50px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .enter-btn:hover {
+            background-color: #36754f;
+            box-shadow: 0 4px 12px rgba(54, 117, 79, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="intro-text">
+            最近你的睡眠质量很差，情绪也经常莫名低落。在公司跟同事闲聊时，随口提起了这件事。同事说她之前也有过类似的困扰，后来经一位心理治疗师做了催眠疗法，失眠状况明显改善，连每天的心情都好了很多，于是便把这位治疗师推荐给了你。
+        </div>
+
+        <!-- 点击后直接跳转到虚拟手机页面 phone.html -->
+        <button class="enter-btn" onclick="location.href='phone.html'">点击进入</button>
+    </div>
+
+</body>
+</html>
