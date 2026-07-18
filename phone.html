@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的手机</title>
+    <style>
+        /* 页面整体背景 */
+        body {
+            background-color: #111111;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* 手机外壳容器：电脑端显示为手机，手机端自动全屏 */
+        .phone-container {
+            width: 100%;
+            height: 100%;
+            max-width: 412px;
+            max-height: 846px;
+            background-color: #000000;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.8);
+            border-radius: 0px;
+        }
+
+        /* 电脑端美化：如果是大屏幕，给它加上手机圆角和边框 */
+        @media (min-width: 500px) {
+            .phone-container {
+                border: 12px solid #222222;
+                border-radius: 36px;
+                height: 92vh;
+            }
+        }
+
+        /* 手机状态栏（电量、时间等模拟） */
+        .status-bar {
+            height: 30px;
+            padding: 5px 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #ffffff;
+            z-index: 10;
+            background-color: rgba(0,0,0,0.2);
+        }
+
+        /* 手机桌面主屏幕 */
+        .screen-main {
+            flex: 1;
+            background: linear-gradient(135deg, #1b2838 0%, #101721 100%);
+            padding: 30px 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 20px;
+            align-content: start;
+        }
+
+        /* App图标通用样式 */
+        .app-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .app-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* 威信图标颜色 */
+        .app-wechat .app-img { background-color: #09bb07; color: white; font-size: 24px; }
+        /* 浏览器图标颜色 */
+        .app-browser .app-img { background-color: #10aeff; color: white; font-size: 24px; }
+
+        .app-name {
+            font-size: 12px;
+            color: #e0e0e0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+        }
+
+        /* ------------------------------------- */
+        /* 虚拟App内部页面样式（默认隐藏） */
+        .app-page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f3f3f3;
+            display: none;
+            flex-direction: column;
+            z-index: 20;
+            color: #333333;
+        }
+
+        /* App头部导航栏 */
+        .app-header {
+            height: 50px;
+            background-color: #ededed;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px 0;
+            border-bottom: 1px solid #dbdbdb;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            cursor: pointer;
+            margin-right: 15px;
+            font-size: 18px;
+            color: #555555;
+        }
+
+        /* 威信聊天界面内部 */
+        #page-wechat { background-color: #f3f3f3; }
+        .chat-container {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-time {
+            text-align: center;
+            font-size: 12px;
+            color: #999999;
+            margin: 10px 0;
+        }
+        .chat-bubble {
+            background-color: #ffffff;
+            padding: 12px 14px;
+            border-radius: 8px;
+            max-width: 80%;
+            align-self: flex-start;
+            font-size: 15px;
+            line-height: 1.5;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            word-break: break-all;
+        }
+        .chat-link {
+            color: #576b95;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* 浏览器界面内部 */
+        #page-browser { background-color: #ffffff; }
+        .browser-bar {
+            padding: 8px 12px;
+            background-color: #f7f7f7;
+            border-bottom: 1px solid #e5e5e5;
+            display: flex;
+            gap: 8px;
+        }
+        .browser-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            font-size: 14px;
+            outline: none;
+            background-color: #ffffff;
+        }
+        .browser-btn {
+            background-color: #10aeff;
+            color: white;
+            border: none;
+            padding: 0 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <span>10:00</span>
+            <span>📶 🔋 100%</span>
+        </div>
+
+        <!-- 手机桌面屏幕 -->
+        <div class="screen-main">
+            <!-- 威信图标 -->
+            <div class="app-icon app-wechat" onclick="openApp('page-wechat')">
+                <div class="app-img">✉</div>
+                <div class="app-name">威信</div>
+            </div>
+            <!-- 浏览器图标 -->
+            <div class="app-icon app-browser" onclick="openApp('page-browser')">
+                <div class="app-img">🌐</div>
+                <div class="app-name">浏览器</div>
+            </div>
+        </div>
+
+        <!-- 威信 App 内部页面 -->
+        <div id="page-wechat" class="app-page">
+            <div class="app-header">
+                <span class="back-btn" onclick="closeApp('page-wechat')">ㄑ</span>
+                <span>同事 A</span>
+            </div>
+            <div class="chat-container">
+                <div class="chat-time">昨天</div>
+                <div class="chat-bubble">
+                    这是昨天说要给你推荐的医生，她叫钟凌骁，你可以先去她的个人网站看看：<br>
+                    <span class="chat-link">doctor.html</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 浏览器 App 内部页面 -->
+        <div id="page-browser" class="app-page">
+            <div class="app-header">
+                <span class="back-btn" onclick="closeApp('page-browser')">ㄑ</span>
+                <span>网络浏览器</span>
+            </div>
+            <div class="browser-bar">
+                <!-- 输入框预填了提示，玩家可以直接粘贴或手动输入 -->
+                <input type="text" id="url-input" class="browser-input" placeholder="输入或粘贴网址进行搜索...">
+                <button class="browser-btn" onclick="searchUrl()">前往</button>
+            </div>
+            <div style="flex:1; display:flex; justify-content:center; align-items:center; color:#999; font-size:14px; padding:20px; text-align:center;">
+                可在上方输入栏粘贴或输入网址，点击“前往”访问网站。
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 打开对应的 App 界面
+        function openApp(pageId) {
+            document.getElementById(pageId).style.display = 'flex';
+        }
+
+        // 关闭对应的 App 界面，回到桌面
+        function closeApp(pageId) {
+            document.getElementById(pageId).style.display = 'none';
+        }
+
+        // 浏览器前往地址的逻辑
+        function searchUrl() {
+            var inputVal = document.getElementById('url-input').value.trim();
+            // 只要输入或包含了 doctor.html，就执行跳转
+            if (inputVal.toLowerCase().includes('doctor.html')) {
+                location.href = 'doctor.html';
+            } else if (inputVal === "") {
+                // 如果空输入，什么都不做
+            } else {
+                alert("无法访问该地址，请检查网址是否正确。");
+            }
+        }
+    </script>
+</body>
+</html>
+
