@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一块油渍的围博 - 个人主页</title>
+    <style>
+        body {
+            background-color: #f3f3f3;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        /* 顶部返回导航 */
+        .header-bar {
+            background-color: #ffffff;
+            padding: 12px 20px;
+            border-bottom: 1px solid #e6e6e6;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-btn {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            color: #ff8200; /* 模拟围博橙 */
+        }
+
+        /* 个人信息主面板 */
+        .profile-container {
+            max-width: 600px;
+            margin: 15px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e6e6e6;
+            padding: 20px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: #e8e8e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            border: 1px solid #ddd;
+        }
+
+        .user-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .nickname {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stats-line {
+            font-size: 13px;
+            color: #666;
+            display: flex;
+            gap: 15px;
+        }
+
+        .stats-line span strong {
+            color: #333;
+        }
+
+        /* 微博信息流列表 */
+        .feed-container {
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* 单条微博卡片 */
+        .weibo-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e6e6e6;
+            padding: 20px;
+        }
+
+        .card-user-info {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .card-date {
+            font-size: 12px;
+            color: #939393;
+            margin-bottom: 12px;
+        }
+
+        .card-text {
+            font-size: 15px;
+            color: #333333;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            text-align: justify;
+        }
+
+        /* 微博底层点赞区域 */
+        .card-footer {
+            margin-top: 15px;
+            border-top: 1px solid #f2f2f2;
+            padding-top: 10px;
+            display: flex;
+        }
+
+        .like-btn {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .like-btn:hover {
+            background-color: #f8f8f8;
+            color: #ff8200;
+        }
+
+        .like-btn.liked {
+            color: #eb7350;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶端条 -->
+    <div class="header-bar">
+        <a class="back-btn" onclick="history.back()">ㄑ 返回搜索结果</a >
+        <div style="font-size: 15px; font-weight: bold;">个人主页</div>
+    </div>
+
+    <!-- 个人名片信息 -->
+    <div class="profile-container">
+        <div class="user-info">
+            <div class="avatar">👤</div>
+            <div class="user-meta">
+                <div class="nickname">一块油渍</div>
+                <div class="stats-line">
+                    <span>关注 <strong>106</strong></span>
+                    <span>粉丝 <strong>98</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 微博正文列表（时间线倒序） -->
+    <div class="feed-container">
+
+        <!-- 2026-06-19 -->
+        <div class="weibo-card">
+            <div class="card-user-info">一块油渍</div>
+            <div class="card-date">2026-06-19</div>
+            <div class="card-text">信号终于来了，归处的大门已经朝我打开，今晚，我终于能睡个好觉了。</div>
+            <div class="card-footer">
+                <button class="like-btn" onclick="toggleLike(this, 12)">👍 <span class="count">12</span></button>
+            </div>
+        </div>
+
+        <!-- 2026-05-28 -->
+        <div class="weibo-card">
+            <div class="card-user-info">一块油渍</div>
+            <div class="card-date">2026-05-28</div>
+            <div class="card-text">如果不是钟医生当我的引路人，我现在还在地狱里挣扎。她带我看到的那个世界，才是唯一的真理。</div>
+            <div class="card-footer">
+                <button class="like-btn" onclick="toggleLike(this, 45)">👍 <span class="count">45</span></button>
+            </div>
+        </div>
+
+        <!-- 2026-05-13 -->
+        <div class="weibo-card">
+            <div class="card-user-info">一块油渍</div>
+            <div class="card-date">2026-05-13</div>
+            <div class="card-text">我们这些在现实中受苦的灵魂，其实都是被贬落的种子，只有去往归处，才能永生。</div>
+            <div class="card-footer">
+                <button class="like-btn" onclick="toggleLike(this, 38)">👍 <span class="count">38</span></button>
+            </div>
+        </div>
+
+        <!-- 2026-04-21 -->
+        <div class="weibo-card">
+            <div class="card-user-info">一块油渍</div>
+            <div class="card-date">2026-04-21</div>
+            <div class="card-text">钟医生的催眠阻断真的神了！我终于像个正常人一样生活了！</div>
+            <div class="card-footer">
+                <button class="like-btn" onclick="toggleLike(this, 56)">👍 <span class="count">56</span></button>
+            </div>
+        </div>
+
+        <!-- 2026-01-11 -->
+        <div class="weibo-card">
+            <div class="card-user-info">一块油渍</div>
+            <div class="card-date">2026-01-11</div>
+            <div class="card-text">每次治疗时听着钟医生的声音睡着，梦里都是一片开满白花的原野。</div>
+            <div class="card-footer">
+                <button class="like-btn" onclick="toggleLike(this, 29)">👍 <span class="count">29</span></button>
+            </div>
+        </div>
+
+        <!-- 2025-11-20 -->
+        <div class="weibo-card">
+            <div class="card-user-info">一块油渍</div>
+            <div class="card-date">2025-11-20</div>
+            <div class="card-text">第四次线下咨询。钟医生的诊疗室真的很神奇，一走进去整个人就安静下来。今天做完催眠出来，长久以来的偏头痛竟然消失了。</div>
+            <div class="card-footer">
+                <button class="like-btn" onclick="toggleLike(this, 22)">👍 <span class="count">22</span></button>
+            </div>
+        </div>
+
+        <!-- 2025-09-13 -->
+        <div class="weibo-card">
+            <div class="card-user-info">一块油渍</div>
+            <div class="card-date">2025-09-13</div>
+            <div class="card-text">朋友看我状态太差，给我推荐了一个叫钟凌骁的心理医生，说是业内大牛。
+不管了，死马当活马医吧，刚去她的诊所网站预约了下个月的初诊，希望有点用。</div>
+            <div class="card-footer">
+                <button class="like-btn" onclick="toggleLike(this, 15)">👍 <span class="count">15</span></button>
+            </div>
+        </div>
+
+        <!-- 2025-08-24 -->
+        <div class="weibo-card">
+            <div class="card-user-info">一块油渍</div>
+            <div class="card-date">2025-08-24</div>
+            <div class="card-text">又是一个失眠到天亮的夜晚。看着窗外天一点点变亮，眼泪止不住地流。为什么别人活着那么轻松，我活着就像在服刑？</div>
+            <div class="card-footer">
+                <button class="like-btn" onclick="toggleLike(this, 68)">👍 <span class="count">68</span></button>
+            </div>
+        </div>
+
+        <!-- 2025-07-19 -->
+        <div class="weibo-card">
+            <div class="card-user-info">一块油渍</div>
+            <div class="card-date">2025-07-19</div>
+            <div class="card-text">每天一睁眼就是铺天盖地的焦虑感，胸口像压了一块大石头。</div>
+            <div class="card-footer">
+                <button class="like-btn" onclick="toggleLike(this, 41)">👍 <span class="count">41</span></button>
+            </div>
+        </div>
+
+        <!-- 2025-05-26 -->
+        <div class="weibo-card">
+            <div class="card-user-info">一块油渍</div>
+            <div class="card-date">2025-05-26</div>
+            <div class="card-text">今天尝试自己做了油焖大虾，虽然卖相一般但味道绝了！下周发工资要去吃那家种草很久的火锅！</div>
+            <div class="card-footer">
+                <button class="like-btn" onclick="toggleLike(this, 8)">👍 <span class="count">8</span></button>
+            </div>
+        </div>
+
+        <!-- 2025-03-09 -->
+        <div class="weibo-card">
+            <div class="card-user-info">一块油渍</div>
+            <div class="card-date">2025-03-09</div>
+            <div class="card-text">新领养的三花小猫太可爱了呜呜呜，以后你就叫年糕啦！请多指教呀，小家伙！</div>
+            <div class="card-footer">
+                <button class="like-btn" onclick="toggleLike(this, 14)">👍 <span class="count">14</span></button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleLike(btn, baseCount) {
+            var countSpan = btn.querySelector('.count');
+            if (btn.classList.contains('liked')) {
+                btn.classList.remove('liked');
+                countSpan.textContent = baseCount;
+            } else {
+                btn.classList.add('liked');
+                countSpan.textContent = baseCount + 1;
+            }
+        }
+    </script>
+</body>
+</html>
