@@ -299,19 +299,6 @@
                     <div class="comment-text">楼主私我，我晚上上线加你。我负责种地，你负责去矿洞挨打（bushi）。</div>
                     <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 15)">❤️ <span class="count">15</span></button></div>
                 </div>
-                <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 15)">❤️ <span class="count">15</span></button></div>
-                </div>
-                <div class="comment-item">
-                    <div class="comment-user">不是一条鱼</div>
-                    <div class="comment-text">带我一个！</div>
-                    <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 5)">❤️ <span class="count">5</span></button></div>
-                </div>
-            </div>
-        </div>
-
-        </div>
-                <div class="comment-footer"><button class="action-btn" onclick="toggleLike(this, 15)">❤️ <span class="count">15</span></button></div>
-                </div>
                 <div class="comment-item">
                     <div class="comment-user">不是一条鱼</div>
                     <div class="comment-text">带我一个！</div>
@@ -350,7 +337,6 @@
                 <div class="comment-item">
                     <div class="comment-user">平平无奇的老鼠</div>
                     <div class="comment-text">对了，提醒楼主一下，钟医生每年三月和九月都是不接诊的。这两个月好像是她的私人休假期，或者是去国外参加学术交流了吧，反正这两个月别空等了。</div>
-                    <!-- 楼主次级回复 -->
                     <div style="margin-top: 8px; padding-left: 15px; border-left: 2px solid #dbcfc2; font-size: 13.5px;">
                         <span class="comment-user">vila会好运（楼主）</span>回复 <span style="color:#7c6d65;">平平无奇的老鼠</span>：<br>
                         <span class="comment-text">啊？一年休两个月吗？心理医生福利这么好的吗！羡慕了，谢谢提醒。</span>
@@ -359,20 +345,27 @@
             </div>
         </div>
 
-    <script>
-        function toggleComments(commentId) {
-            var el = document.getElementById(commentId);
-            el.classList.toggle('open');
-        }
+    </div>
 
+    <script>
+        // 点赞功能
         function toggleLike(btn, baseCount) {
-            var countSpan = btn.querySelector('.count');
             if (btn.classList.contains('liked')) {
                 btn.classList.remove('liked');
-                countSpan.textContent = baseCount;
+                btn.querySelector('.count').innerText = baseCount;
             } else {
                 btn.classList.add('liked');
-                countSpan.textContent = baseCount + 1;
+                btn.querySelector('.count').innerText = baseCount + 1;
+            }
+        }
+
+        // 评论区展开/收起
+        function toggleComments(commentId) {
+            var el = document.getElementById(commentId);
+            if (el.classList.contains('open')) {
+                el.classList.remove('open');
+            } else {
+                el.classList.add('open');
             }
         }
     </script>
